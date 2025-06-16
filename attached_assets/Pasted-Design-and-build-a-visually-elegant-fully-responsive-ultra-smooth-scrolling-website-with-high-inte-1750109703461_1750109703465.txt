@@ -1,0 +1,123 @@
+Design and build a visually elegant, fully responsive, ultra-smooth-scrolling website with high interactivity, modern animations, and excellent performance—using best practices in modern web development.
+
+🔧 Tech Stack
+HTML5 (semantic structure)
+
+CSS3 (with variables, flex/grid, animations, transforms)
+
+JavaScript (Vanilla) or React + GSAP for dynamic interaction & animations
+
+GSAP + ScrollTrigger (preferred for animation performance and parallax)
+
+Intersection Observer API (for triggering animations without scroll lag)
+
+✨ Core Features
+1. Parallax Scrolling
+Multiple background layers (divs with background images or gradients)
+
+Scroll speed controlled using GSAP ScrollTrigger or transform: translateY() via JS
+
+Creates a depth illusion (layers moving at different speeds)
+
+css
+Copy
+Edit
+.layer[data-speed="2"] {
+  transform: translateY(calc(var(--scroll) / 2));
+}
+2. Loading Screen
+Full-screen overlay with brand-colored background
+
+Minimal spinner or progress bar
+
+Use JS to listen for window.onload, fade out the loading screen with a subtle CSS transition
+
+html
+Copy
+Edit
+<div id="loader"><div class="spinner"></div></div>
+3. Ultra-Smooth Scrolling
+Use scroll-behavior: smooth; in CSS for basic smoothness
+
+Enhance with GSAP’s smooth scrolling or requestAnimationFrame loop for buttery performance (mimic Fruitful’s infinite frame scroll feel)
+
+4. Scroll Animations
+Animate elements on scroll using:
+
+GSAP ScrollTrigger or
+
+Intersection Observer API (fade-ins, slide-ins, scaling)
+
+Use easing and delay for polished timing
+
+js
+Copy
+Edit
+gsap.from(".fade-in", {
+  scrollTrigger: ".fade-in",
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  ease: "power2.out"
+});
+5. Styling & UI
+Typography: Use elegant, readable fonts (e.g., Inter, Neue Montreal)
+
+Color Scheme: Harmonious modern palette (inspired by Fruitful—soft gradients, calm tones)
+
+Spacing: Generous padding/margin, consistent rhythm
+
+CSS Variables for global theming (--primary-color, --font-main, etc.)
+
+css
+Copy
+Edit
+:root {
+  --font-main: 'Inter', sans-serif;
+  --primary-color: #2C3E50;
+  --accent-color: #18BC9C;
+}
+6. Responsive Design
+Use flexbox/grid for layout
+
+Media queries for breakpoints:
+
+Desktop: > 1024px
+
+Tablet: 768px – 1024px
+
+Mobile: < 768px
+
+Touch-friendly interactions and tap targets
+
+7. Performance Optimization
+Lazy load images (loading="lazy")
+
+Minimize DOM nodes
+
+Compress assets
+
+Defer non-critical scripts
+
+Use requestAnimationFrame and GSAP instead of setInterval or onscroll for animations
+
+8. Accessibility
+Semantic tags: <header>, <main>, <section>, <footer>
+
+Use aria-labels, alt text for images, keyboard navigability
+
+Contrast ratios and focus states maintained
+
+✅ Example Page Sections
+Hero – Parallax background + animated headline
+
+About/Intro – Slide-ins and fade-ins
+
+Features/Benefits – Grid layout with interactive hover states
+
+Testimonials – Carousel or scroll reveal
+
+CTA Section – Bold typography and soft background motion
+
+Footer – Accessible, with clear links and social icons
+
