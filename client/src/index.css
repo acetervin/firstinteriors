@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(207, 26%, 17%);
+  --muted: hsl(210, 40%, 98%);
+  --muted-foreground: hsl(215, 13%, 44%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(207, 26%, 17%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(207, 26%, 17%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(207, 26%, 17%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 98%);
+  --secondary-foreground: hsl(222, 84%, 5%);
+  --accent: hsl(36, 45%, 70%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(207, 26%, 17%);
+  --radius: 0.5rem;
+  
+  /* Custom properties for First Interior */
+  --primary-color: hsl(207, 26%, 17%);
+  --accent-color: hsl(36, 45%, 70%);
+  --neutral-color: hsl(215, 13%, 44%);
+  --warm-white: hsl(0, 0%, 99%);
+  --gradient-bg: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(220, 13%, 91%) 100%);
+  
+  --scroll: 0;
+  --font-main: 'Inter', sans-serif;
+}
+
+.dark {
+  --background: hsl(240, 10%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 4%, 16%);
+  --muted-foreground: hsl(240, 5%, 65%);
+  --popover: hsl(240, 10%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 4%, 16%);
+  --input: hsl(240, 4%, 16%);
+  --primary: hsl(0, 0%, 98%);
+  --primary-foreground: hsl(240, 10%, 4%);
+  --secondary: hsl(240, 4%, 16%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(36, 45%, 70%);
+  --accent-foreground: hsl(240, 10%, 4%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 5%, 84%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    font-family: var(--font-main);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Loading Screen */
+  .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, hsl(207, 26%, 22%) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  .loading-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid hsla(36, 45%, 70%, 0.3);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  /* Parallax */
+  .parallax-layer {
+    transform: translateY(calc(var(--scroll) * var(--speed, 1) * 1px));
+  }
+
+  /* Animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Navigation */
+  .nav-link {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Service Cards */
+  .service-card {
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px hsla(0, 0%, 0%, 0.15);
+  }
+
+  /* Portfolio Items */
+  .portfolio-item {
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .portfolio-item:hover {
+    transform: scale(1.05);
+  }
+
+  .portfolio-item img {
+    transition: transform 0.4s ease;
+  }
+
+  .portfolio-item:hover img {
+    transform: scale(1.1);
+  }
+
+  /* Gradient Backgrounds */
+  .gradient-bg {
+    background: var(--gradient-bg);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    background: var(--accent-color);
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: hsl(36, 45%, 65%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px hsla(36, 45%, 70%, 0.3);
+  }
+
+  .btn-outline {
+    border: 2px solid white;
+    color: white;
+    background: transparent;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+
+  /* Form Elements */
+  .form-input {
+    transition: all 0.3s ease;
+  }
+
+  .form-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px hsla(36, 45%, 70%, 0.1);
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Scroll Behavior */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Colors */
+  .text-primary-custom {
+    color: var(--primary-color);
+  }
+
+  .text-accent-custom {
+    color: var(--accent-color);
+  }
+
+  .text-neutral-custom {
+    color: var(--neutral-color);
+  }
+
+  .bg-primary-custom {
+    background-color: var(--primary-color);
+  }
+
+  .bg-accent-custom {
+    background-color: var(--accent-color);
+  }
+
+  .bg-warm-white {
+    background-color: var(--warm-white);
+  }
+}
