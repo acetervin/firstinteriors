@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
+import { useTheme } from './theme-provider';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +19,9 @@ export function Navigation() {
   }, []);
 
   const navItems = [
-    { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Services' },
     { path: '/portfolio', label: 'Portfolio' },
-    { path: '/testimonials', label: 'Reviews' },
     { path: '/contact', label: 'Contact' },
   ];
 
@@ -30,7 +30,7 @@ export function Navigation() {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 glass-nav ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`fixed top-0 w-full z-50 navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -41,36 +41,50 @@ export function Navigation() {
             </Link>
           </div>
           
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
+          <div className="hidden md:flex items-center space-x-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+              >
+                <button
+                  className={`nav-link font-medium ${
+                    isActive(item.path) ? 'active' : ''
+                  }`}
                 >
-                  <button
-                    className={`nav-link text-primary-custom font-medium ${
-                      isActive(item.path) ? 'active' : ''
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                </Link>
-              ))}
-            </div>
+                  {item.label}
+                </button>
+              </Link>
+            ))}
+            <button
+              onClick={toggleTheme}
+              className="nav-link ml-4 p-2"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
           </div>
 
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-md text-primary-custom hover:text-accent-custom focus:outline-none focus:ring-2 focus:ring-accent-custom"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center space-x-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-md hover:bg-accent/10 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-md hover:bg-accent/10 transition-colors"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mobile-menu-glass rounded-b-2xl">
+          <div className="md:hidden absolute top-full left-0 right-0 mobile-menu rounded-b-2xl">
             <div className="px-4 pt-2 pb-4 space-y-2">
               {navItems.map((item) => (
                 <Link
@@ -79,7 +93,7 @@ export function Navigation() {
                 >
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block w-full text-left nav-link text-primary-custom font-medium ${
+                    className={`block w-full text-left nav-link font-medium ${
                       isActive(item.path) ? 'active' : ''
                     }`}
                   >
