@@ -5,11 +5,13 @@ import { Footer } from '@/components/footer';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { ChevronDown, ArrowRight, Home as HomeIcon, Building, Users, Star, Phone, Award } from 'lucide-react';
 import { Link } from 'wouter';
+import clsx from 'clsx';
+import { BackButton } from '@/components/back-button';
 
 export default function Home() {
-  const { ref: heroRef, hasIntersected: heroIntersected } = useIntersectionObserver();
-  const { ref: featuresRef, hasIntersected: featuresIntersected } = useIntersectionObserver();
-  const { ref: statsRef, hasIntersected: statsIntersected } = useIntersectionObserver();
+  const { ref: heroRef, hasIntersected: heroIntersected } = useIntersectionObserver<HTMLDivElement>();
+  const { ref: featuresRef, hasIntersected: featuresIntersected } = useIntersectionObserver<HTMLDivElement>();
+  const { ref: statsRef, hasIntersected: statsIntersected } = useIntersectionObserver<HTMLDivElement>();
 
   useEffect(() => {
     document.title = 'First Interior - Premium Interior Design Solutions in Kenya';
@@ -44,11 +46,11 @@ export default function Home() {
       const updateParallax = () => {
         const scrolled = window.pageYOffset;
         const parallaxElements = document.querySelectorAll('.parallax-layer');
-        
         parallaxElements.forEach((element) => {
-          const speed = parseFloat(element.getAttribute('data-speed') || '0.5');
+          const el = element as HTMLElement;
+          const speed = parseFloat(el.getAttribute('data-speed') || '0.5');
           const yPos = -(scrolled * speed);
-          element.style.transform = `translateY(${yPos}px)`;
+          el.style.transform = `translateY(${yPos}px)`;
         });
       };
 
@@ -92,6 +94,24 @@ export default function Home() {
       title: 'Expert Consultation',
       description: 'Get professional advice from our team of experienced interior designers.',
       link: '/contact'
+    },
+    {
+      icon: Star,
+      title: '3D Visualization',
+      description: 'Experience your future space with immersive 3D renderings and virtual walkthroughs.',
+      link: '/services'
+    },
+    {
+      icon: Phone,
+      title: 'Project Management',
+      description: 'Seamless coordination from concept to completion, ensuring every detail is perfect.',
+      link: '/services'
+    },
+    {
+      icon: Award,
+      title: 'Custom Furniture Design',
+      description: 'Bespoke furniture solutions tailored to your space and style preferences.',
+      link: '/services'
     }
   ];
 
@@ -103,13 +123,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-warm-white">
+    <div className="min-h-screen bg-gradient-to-br from-background via-accent/5 to-background transition-colors duration-500">
       <LoadingScreen />
       <Navigation />
-      
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
+        <div className="absolute left-0 top-0 z-30 mt-12 ml-4">
+          <BackButton />
+        </div>
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 z-0 animate-gradient bg-gradient-to-br from-accent/30 via-primary/10 to-background/80 dark:from-accent/30 dark:via-primary/10 dark:to-background blur-2xl" />
+        {/* Parallax Image Layer */}
         <div 
           className="parallax-layer absolute inset-0 z-0"
           data-speed="0.5"
@@ -117,77 +141,74 @@ export default function Home() {
             backgroundImage: 'url(https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
+            // Remove backgroundAttachment: 'fixed' to avoid stacking issues on some browsers
+            opacity: 0.5,
+            zIndex: 0,
           }}
         />
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        
+        {/* Glassmorphism Overlay */}
+        {/* <div className="absolute inset-0 bg-background/60 dark:bg-background/80 backdrop-blur-md z-10" /> */}
         {/* Hero Content */}
-        <div ref={heroRef} className="relative z-20 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 opacity-0">
-            Transforming Spaces,<br />
-            <span className="text-accent-custom">Creating Dreams</span>
-          </h1>
-          <p className="hero-subtitle text-xl md:text-2xl mb-8 font-light opacity-0">
+        <div ref={heroRef} className="relative z-30 text-center max-w-4xl mx-auto px-4 flex flex-col items-center">
+          <p className="hero-subtitle text-2xl md:text-3xl mb-10 font-light text-foreground/80">
             Premium interior design solutions that blend luxury with functionality for over 15 years
           </p>
-          <div className="hero-buttons space-x-4 opacity-0">
+          {/* NEW: Hero Badge/USP */}
+          <div className="mb-8 flex flex-col items-center gap-2">
+            <span className="inline-block bg-accent/10 text-accent font-semibold px-6 py-2 rounded-full text-lg tracking-wide shadow-sm border border-accent/20">
+              Kenya’s #1 Award-Winning Interior Design Studio
+            </span>
+            <span className="inline-block text-muted-foreground text-base">Trusted by 200+ clients • 15+ years of excellence</span>
+          </div>
+          <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/portfolio">
-              <button className="btn-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+              <button className="bg-accent hover:bg-accent/90 text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl transition-all duration-300 transform hover:scale-105">
                 Explore Our Work
               </button>
             </Link>
             <Link href="/contact">
-              <button className="btn-outline px-8 py-4 rounded-lg font-semibold transition-all duration-300">
+              <button className="border-2 border-accent text-accent hover:bg-accent hover:text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl transition-all duration-300">
                 Get Consultation
               </button>
             </Link>
           </div>
         </div>
-
         {/* Floating Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float">
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float z-30">
           <button 
             onClick={() => scrollToSection('features')}
-            className="text-white hover:text-accent-custom transition-colors duration-300"
+            className="bg-background/80 dark:bg-background/90 shadow-lg rounded-full p-3 text-accent hover:bg-accent hover:text-white transition-colors duration-300 border border-accent/20 backdrop-blur-md"
           >
-            <ChevronDown size={24} />
+            <ChevronDown size={28} />
           </button>
         </div>
+        {/* Gradient Fade Transition to Next Section */}
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-32 z-20"
+          style={{
+            background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--background) 100%)"
+          }}
+        />
       </section>
-
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
+      <section id="features" className="py-24 bg-background dark:bg-background transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={featuresRef} className={`text-center mb-16 reveal ${featuresIntersected ? 'active' : ''}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">What We Do Best</h2>
-            <p className="text-xl text-neutral-custom max-w-3xl mx-auto">
+          <div ref={featuresRef} className={clsx('text-center mb-20 reveal', featuresIntersected && 'active')}>
+            <h2 className="text-5xl md:text-6xl font-extrabold mb-8 text-accent dark:text-accent">What We Do Best</h2>
+            <p className="text-2xl text-muted-foreground dark:text-muted-foreground max-w-3xl mx-auto">
               Comprehensive interior design solutions tailored to your unique needs and vision
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Link key={feature.title} href={feature.link}>
-                  <div
-                    className={`service-card bg-white rounded-2xl p-8 shadow-lg border border-gray-100 text-center group reveal ${featuresIntersected ? 'active' : ''}`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="w-16 h-16 bg-accent-custom/10 rounded-lg flex items-center justify-center mx-auto mb-6">
-                      <Icon className="w-8 h-8 text-accent-custom" />
-                    </div>
-                    <h3 className="text-2xl font-semibold mb-4 text-primary-custom group-hover:text-accent-custom transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-neutral-custom leading-relaxed mb-6">{feature.description}</p>
-                    <div className="flex items-center justify-center text-accent-custom group-hover:translate-x-2 transition-transform">
-                      <span className="mr-2 text-sm font-medium">Learn More</span>
-                      <ArrowRight size={16} />
-                    </div>
+                <div key={feature.title} className="service-card bg-card/80 dark:bg-card text-card-foreground dark:text-card-foreground rounded-3xl p-10 shadow-2xl border border-border dark:border-highlight text-center backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-3xl">
+                  <div className="w-20 h-20 bg-accent/10 dark:bg-accent/20 rounded-xl flex items-center justify-center mx-auto mb-8">
+                    <Icon className="w-10 h-10 text-accent" />
                   </div>
-                </Link>
+                  <h3 className="text-2xl font-bold mb-4 text-primary dark:text-primary">{feature.title}</h3>
+                  <p className="text-muted-foreground dark:text-muted-foreground mb-6">{feature.description}</p>
+                </div>
               );
             })}
           </div>
@@ -206,11 +227,11 @@ export default function Home() {
                   className={`reveal ${statsIntersected ? 'active' : ''}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-16 h-16 bg-accent-custom/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-accent-custom" />
+                  <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-8 h-8 text-accent" />
                   </div>
-                  <div className="text-4xl md:text-5xl font-bold text-accent-custom mb-2">{stat.number}</div>
-                  <div className="text-sm text-neutral-custom uppercase tracking-wide">{stat.label}</div>
+                  <div className="text-4xl md:text-5xl font-bold text-accent mb-2">{stat.number}</div>
+                  <div className="text-sm text-muted-foreground uppercase tracking-wide">{stat.label}</div>
                 </div>
               );
             })}
@@ -218,12 +239,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Preview Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-background dark:bg-background transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Why Choose First Interior?</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Why Choose First Interior?</h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 With over 15 years of experience transforming spaces across Kenya, we've established ourselves as the premier interior design consultancy. Our team combines international expertise with local understanding to create spaces that truly reflect your vision.
               </p>
@@ -256,10 +277,10 @@ export default function Home() {
       </section>
 
       {/* Services Preview Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50 dark:bg-[#181818]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Our Expertise</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Our Expertise</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               From residential homes to commercial spaces, we deliver comprehensive design solutions
             </p>
@@ -304,10 +325,10 @@ export default function Home() {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-[#F5FFFA] dark:bg-[#181818]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Featured Projects</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Featured Projects</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Discover some of our most stunning interior design transformations
             </p>
@@ -321,7 +342,7 @@ export default function Home() {
                 image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
               },
               {
-                title: "Luxury Bedroom Suite", 
+                title: "Luxury Bedroom Suite",
                 category: "Bedroom",
                 image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
               },
@@ -359,10 +380,10 @@ export default function Home() {
       </section>
 
       {/* Testimonials Preview */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50 dark:bg-[#181818]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">What Our Clients Say</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">What Our Clients Say</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -411,23 +432,25 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Space?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-            Let's bring your vision to life with our expert design services. Explore our portfolio or start your project today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="/portfolio">
-              <button className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
-                View Our Portfolio
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 w-full sm:w-auto">
-                Start Your Project
-              </button>
-            </Link>
+      <section className="py-20 bg-[#F5FFFA] dark:bg-[#23262F] flex items-center justify-center">
+        <div className="w-full max-w-xl mx-auto px-4">
+          <div className="rounded-2xl shadow-2xl bg-white/80 dark:bg-[#2c2f36]/90 p-8 text-center border border-accent/10">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary dark:text-white drop-shadow-lg">Ready to Transform Your Space?</h2>
+            <p className="text-lg mb-8 max-w-xl mx-auto opacity-90 text-muted-foreground dark:text-muted-foreground">
+              Let's bring your vision to life with our expert design services. Explore our portfolio or start your project today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/portfolio">
+                <button className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+                  View Our Portfolio
+                </button>
+              </Link>
+              <Link href="/contact">
+                <button className="border-2 border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-bold text-base shadow-xl transition-all duration-300 w-full sm:w-auto bg-white dark:bg-transparent">
+                  Start Your Project
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

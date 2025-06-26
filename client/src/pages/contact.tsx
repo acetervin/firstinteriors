@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { BackButton } from '@/components/back-button';
 
 export default function Contact() {
   const { ref: heroRef, hasIntersected: heroIntersected } = useIntersectionObserver();
@@ -95,23 +96,34 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-warm-white">
+    <div className="min-h-screen bg-background dark:bg-background">
       <Navigation />
-      
+      <div className="mt-4 ml-4">
+        <BackButton />
+      </div>
+
       {/* Hero Section */}
-      <section className="pt-24 pb-20 gradient-bg">
+      <section className="pt-24 pb-20 bg-background dark:bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={heroRef} className={`text-center reveal ${heroIntersected ? 'active' : ''}`}>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient">Get In Touch</h1>
-            <p className="text-xl text-neutral-custom max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your space? Let's discuss your vision and create something extraordinary together
+          <div className="mb-6 mt-12 text-left">
+            <BackButton />
+          </div>
+          <div
+            ref={heroRef as React.RefObject<HTMLDivElement>}
+            className={`text-center reveal ${heroIntersected ? 'active' : ''}`}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-accent dark:text-accent">
+              Contact Us
+            </h1>
+            <p className="text-xl text-muted-foreground dark:text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Get in touch for a free consultation or to discuss your next project
             </p>
           </div>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background dark:bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => {
@@ -119,19 +131,19 @@ export default function Contact() {
               return (
                 <div
                   key={info.title}
-                  className={`text-center p-8 rounded-2xl shadow-lg border border-gray-100 reveal ${heroIntersected ? 'active' : ''}`}
+                  className={`text-center p-8 rounded-2xl shadow-lg border border-border dark:border-highlight bg-card dark:bg-card reveal ${heroIntersected ? 'active' : ''}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-16 h-16 bg-accent-custom/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Icon className="w-8 h-8 text-accent-custom" />
+                  <div className="w-16 h-16 bg-accent/10 dark:bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Icon className="w-8 h-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 text-primary-custom">{info.title}</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-primary dark:text-primary">{info.title}</h3>
                   <div className="space-y-1 mb-4">
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-neutral-custom font-medium">{detail}</p>
+                      <p key={idx} className="text-muted-foreground dark:text-muted-foreground font-medium">{detail}</p>
                     ))}
                   </div>
-                  <p className="text-sm text-neutral-custom">{info.description}</p>
+                  <p className="text-sm text-muted-foreground dark:text-muted-foreground">{info.description}</p>
                 </div>
               );
             })}
@@ -140,11 +152,11 @@ export default function Contact() {
       </section>
 
       {/* Contact Form & Map */}
-      <section className="py-20 gradient-bg">
+      <section className="py-20 bg-background dark:bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={contactRef} className={`text-center mb-16 reveal ${contactIntersected ? 'active' : ''}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Start Your Project</h2>
-            <p className="text-xl text-neutral-custom max-w-3xl mx-auto">
+          <div ref={contactRef as React.RefObject<HTMLDivElement>} className={`text-center mb-16 reveal ${contactIntersected ? 'active' : ''}`}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent dark:text-accent">Start Your Project</h2>
+            <p className="text-xl text-muted-foreground dark:text-muted-foreground max-w-3xl mx-auto">
               Fill out the form below and we'll get back to you within 24 hours
             </p>
           </div>
@@ -152,10 +164,10 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div className={`reveal ${contactIntersected ? 'active' : ''}`}>
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-lg space-y-6">
+              <form onSubmit={handleSubmit} className="bg-card dark:bg-card rounded-2xl p-8 shadow-lg space-y-6 border border-border dark:border-highlight">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="firstName" className="block text-sm font-medium text-neutral-custom mb-2">
+                    <Label htmlFor="firstName" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                       First Name *
                     </Label>
                     <Input
@@ -169,7 +181,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="lastName" className="block text-sm font-medium text-neutral-custom mb-2">
+                    <Label htmlFor="lastName" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                       Last Name *
                     </Label>
                     <Input
@@ -186,7 +198,7 @@ export default function Contact() {
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="email" className="block text-sm font-medium text-neutral-custom mb-2">
+                    <Label htmlFor="email" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                       Email *
                     </Label>
                     <Input
@@ -200,7 +212,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="phone" className="block text-sm font-medium text-neutral-custom mb-2">
+                    <Label htmlFor="phone" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                       Phone *
                     </Label>
                     <Input
@@ -217,7 +229,7 @@ export default function Contact() {
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="projectType" className="block text-sm font-medium text-neutral-custom mb-2">
+                    <Label htmlFor="projectType" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                       Project Type *
                     </Label>
                     <Select value={formData.projectType} onValueChange={(value) => handleInputChange('projectType', value)}>
@@ -234,7 +246,7 @@ export default function Contact() {
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="budget" className="block text-sm font-medium text-neutral-custom mb-2">
+                    <Label htmlFor="budget" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                       Budget Range
                     </Label>
                     <Select value={formData.budget} onValueChange={(value) => handleInputChange('budget', value)}>
@@ -253,7 +265,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <Label htmlFor="timeline" className="block text-sm font-medium text-neutral-custom mb-2">
+                  <Label htmlFor="timeline" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                     Project Timeline
                   </Label>
                   <Select value={formData.timeline} onValueChange={(value) => handleInputChange('timeline', value)}>
@@ -271,7 +283,7 @@ export default function Contact() {
                 </div>
                 
                 <div>
-                  <Label htmlFor="message" className="block text-sm font-medium text-neutral-custom mb-2">
+                  <Label htmlFor="message" className="block text-sm font-medium text-muted-foreground dark:text-muted-foreground mb-2">
                     Project Details *
                   </Label>
                   <Textarea
@@ -296,38 +308,38 @@ export default function Contact() {
 
             {/* Map & Additional Info */}
             <div className={`reveal ${contactIntersected ? 'active' : ''}`} style={{ animationDelay: '0.3s' }}>
-              <div className="bg-white rounded-2xl p-8 shadow-lg h-full">
+              <div className="bg-card dark:bg-card rounded-2xl p-8 shadow-lg h-full border border-border dark:border-highlight">
                 <div className="mb-8">
-                  <h3 className="text-2xl font-semibold mb-4 text-primary-custom flex items-center">
-                    <MessageSquare className="w-6 h-6 mr-3 text-accent-custom" />
+                  <h3 className="text-2xl font-semibold mb-4 text-primary flex items-center">
+                    <MessageSquare className="w-6 h-6 mr-3 text-accent" />
                     What to Expect
                   </h3>
                   <div className="space-y-4">
                     <div className="flex items-start">
-                      <div className="w-8 h-8 bg-accent-custom text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">
+                      <div className="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">
                         1
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary-custom mb-1">Initial Response</h4>
-                        <p className="text-neutral-custom text-sm">We'll respond to your inquiry within 24 hours to schedule a consultation.</p>
+                        <h4 className="font-semibold text-primary mb-1">Initial Response</h4>
+                        <p className="text-muted-foreground dark:text-muted-foreground text-sm">We'll respond to your inquiry within 24 hours to schedule a consultation.</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <div className="w-8 h-8 bg-accent-custom text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">
+                      <div className="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">
                         2
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary-custom mb-1">Free Consultation</h4>
-                        <p className="text-neutral-custom text-sm">We'll visit your space or meet virtually to discuss your vision and requirements.</p>
+                        <h4 className="font-semibold text-primary mb-1">Free Consultation</h4>
+                        <p className="text-muted-foreground dark:text-muted-foreground text-sm">We'll visit your space or meet virtually to discuss your vision and requirements.</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <div className="w-8 h-8 bg-accent-custom text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">
+                      <div className="w-8 h-8 bg-accent text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">
                         3
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary-custom mb-1">Custom Proposal</h4>
-                        <p className="text-neutral-custom text-sm">You'll receive a detailed proposal with timeline, budget, and design concepts.</p>
+                        <h4 className="font-semibold text-primary mb-1">Custom Proposal</h4>
+                        <p className="text-muted-foreground dark:text-muted-foreground text-sm">You'll receive a detailed proposal with timeline, budget, and design concepts.</p>
                       </div>
                     </div>
                   </div>
@@ -336,9 +348,9 @@ export default function Contact() {
                 {/* Map Placeholder */}
                 <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-64 flex items-center justify-center">
                   <div className="text-center">
-                    <MapPin className="w-12 h-12 text-accent-custom mx-auto mb-4" />
-                    <h4 className="text-lg font-semibold text-primary-custom mb-2">Find Us Here</h4>
-                    <p className="text-neutral-custom">Westlands, Nairobi, Kenya</p>
+                    <MapPin className="w-12 h-12 text-accent mx-auto mb-4" />
+                    <h4 className="text-lg font-semibold text-primary mb-2">Find Us Here</h4>
+                    <p className="text-muted-foreground">Westlands, Nairobi, Kenya</p>
                   </div>
                 </div>
               </div>
@@ -351,8 +363,8 @@ export default function Contact() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Frequently Asked Questions</h2>
-            <p className="text-xl text-neutral-custom">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Frequently Asked Questions</h2>
+            <p className="text-xl text-muted-foreground">
               Get answers to common questions about our interior design process
             </p>
           </div>
@@ -361,10 +373,10 @@ export default function Contact() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-gradient-bg rounded-2xl p-8 shadow-lg border border-gray-100"
+                className="bg-background rounded-2xl p-8 shadow-lg border border-highlight"
               >
-                <h3 className="text-lg font-semibold mb-4 text-primary-custom">{faq.question}</h3>
-                <p className="text-neutral-custom leading-relaxed">{faq.answer}</p>
+                <h3 className="text-lg font-semibold mb-4 text-primary">{faq.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
               </div>
             ))}
           </div>

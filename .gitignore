@@ -1,6 +1,57 @@
-node_modules
-dist
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# Misc
+*.local
+*.sublime-workspace
+*.sublime-project
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# SvelteKit
+.svelte-kit/
+
+# Next.js
+.next/
+
+# Vite
+*.vite
+
+# Drizzle ORM
+.drizzle/
+
+# Others
+*.log
+
+# Ignore attached_assets if not needed in repo
+attached_assets/
+
+# Existing project-specific ignores
 server/public
 vite.config.ts.*
 *.tar.gz

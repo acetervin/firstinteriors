@@ -1,7 +1,8 @@
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import { RefObject } from 'react';
 
 export function CTASection() {
-  const { ref, hasIntersected } = useIntersectionObserver();
+  const { ref, hasIntersected } = useIntersectionObserver() as { ref: RefObject<HTMLDivElement>, hasIntersected: boolean };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -11,7 +12,7 @@ export function CTASection() {
   };
 
   return (
-    <section className="py-20 bg-primary-custom text-white relative overflow-hidden">
+    <section className="py-20 bg-background text-foreground relative overflow-hidden transition-colors duration-300">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">

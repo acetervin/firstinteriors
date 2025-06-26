@@ -22,6 +22,20 @@ export function ThemeProvider({ children, defaultTheme = 'light' }: ThemeProvide
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
+    } else {
+      // Detect system preference if no saved theme
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      setTheme(prefersDark.matches ? 'dark' : 'light');
+
+      // Listen for system theme changes
+      const handleChange = (e: MediaQueryListEvent) => {
+        if (!localStorage.getItem('theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      };
+
+      prefersDark.addEventListener('change', handleChange);
+      return () => prefersDark.removeEventListener('change', handleChange);
     }
   }, []);
 

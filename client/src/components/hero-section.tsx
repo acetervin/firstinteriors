@@ -7,7 +7,8 @@ export function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.gsap) {
+    let gsapAvailable = typeof window !== 'undefined' && window.gsap;
+    if (gsapAvailable) {
       window.gsap.registerPlugin(window.ScrollTrigger);
 
       // Hero animations
@@ -40,7 +41,7 @@ export function HeroSection() {
         parallaxElements.forEach((element) => {
           const speed = parseFloat(element.getAttribute('data-speed') || '0.5');
           const yPos = -(scrolled * speed);
-          element.style.transform = `translateY(${yPos}px)`;
+          (element as HTMLElement).style.transform = `translateY(${yPos}px)`;
         });
       };
 
@@ -49,6 +50,15 @@ export function HeroSection() {
       return () => {
         window.removeEventListener('scroll', updateParallax);
       };
+    } else {
+      // Fallback: ensure elements are visible if GSAP is not loaded
+      const showElements = ['.hero-title', '.hero-subtitle', '.hero-buttons'];
+      showElements.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((el) => {
+          (el as HTMLElement).style.opacity = '1';
+          (el as HTMLElement).style.transform = 'none';
+        });
+      });
     }
   }, []);
 
@@ -78,7 +88,7 @@ export function HeroSection() {
       <div ref={heroRef} className="relative z-20 text-center text-white max-w-4xl mx-auto px-4">
         <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 opacity-0">
           Transforming Spaces,<br />
-          <span className="text-accent-custom">Creating Dreams</span>
+          <span className="text-accent">Creating Dreams</span>
         </h1>
         <p className="hero-subtitle text-xl md:text-2xl mb-8 font-light opacity-0">
           Premium interior design solutions that blend luxury with functionality
@@ -103,7 +113,7 @@ export function HeroSection() {
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float">
         <button 
           onClick={() => scrollToSection('about')}
-          className="text-white hover:text-accent-custom transition-colors duration-300"
+          className="text-white hover:text-accent transition-colors duration-300"
         >
           <ChevronDown size={24} />
         </button>

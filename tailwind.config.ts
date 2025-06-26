@@ -5,6 +5,9 @@ export default {
   content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'custom-md': '950px',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -36,6 +39,7 @@ export default {
         accent: {
           DEFAULT: "var(--accent)",
           foreground: "var(--accent-foreground)",
+          hover: "var(--accent-hover)",
         },
         destructive: {
           DEFAULT: "var(--destructive)",
@@ -44,6 +48,10 @@ export default {
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
+        navbar: "var(--navbar)",
+        highlight: "var(--highlight)",
+        buttonhover: "var(--button-hover)",
+        textsecondary: "var(--text-secondary)",
         chart: {
           "1": "var(--chart-1)",
           "2": "var(--chart-2)",
@@ -51,6 +59,7 @@ export default {
           "4": "var(--chart-4)",
           "5": "var(--chart-5)",
         },
+        
         sidebar: {
           DEFAULT: "var(--sidebar-background)",
           foreground: "var(--sidebar-foreground)",

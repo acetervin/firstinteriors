@@ -38,11 +38,11 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 gradient-bg">
+    <section id="contact" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className={`text-center mb-16 reveal ${hasIntersected ? 'active' : ''}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Get In Touch</h2>
-          <p className="text-xl text-neutral-custom max-w-3xl mx-auto">
+        <div ref={ref as React.RefObject<HTMLDivElement>} className={`text-center mb-16 reveal ${hasIntersected ? 'active' : ''}`}>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Get In Touch</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to start your interior design journey? We'd love to hear from you.
           </p>
         </div>
@@ -51,32 +51,32 @@ export function ContactSection() {
           <div className={`reveal ${hasIntersected ? 'active' : ''}`}>
             <div className="space-y-8">
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-accent-custom/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
-                  <MapPin className="w-6 h-6 text-accent-custom" />
+                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
+                  <MapPin className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2 text-primary-custom">Visit Our Showroom</h3>
-                  <p className="text-neutral-custom">Westlands, Nairobi<br />Kenya</p>
+                  <h3 className="font-semibold text-lg mb-2 text-primary">Visit Our Showroom</h3>
+                  <p className="text-muted-foreground">Westlands, Nairobi<br />Kenya</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-accent-custom/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
-                  <Phone className="w-6 h-6 text-accent-custom" />
+                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
+                  <Phone className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2 text-primary-custom">Call Us</h3>
-                  <p className="text-neutral-custom">+254 700 123 456<br />Mon - Fri: 8AM - 6PM</p>
+                  <h3 className="font-semibold text-lg mb-2 text-primary">Call Us</h3>
+                  <p className="text-muted-foreground">+254 700 123 456<br />Mon - Fri: 8AM - 6PM</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-accent-custom/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
-                  <Mail className="w-6 h-6 text-accent-custom" />
+                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0 mr-4">
+                  <Mail className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2 text-primary-custom">Email Us</h3>
-                  <p className="text-neutral-custom">info@firstinterior.co.ke<br />projects@firstinterior.co.ke</p>
+                  <h3 className="font-semibold text-lg mb-2 text-primary">Email Us</h3>
+                  <p className="text-muted-foreground">info@firstinterior.co.ke<br />projects@firstinterior.co.ke</p>
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@ export function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <Label htmlFor="firstName" className="block text-sm font-medium text-neutral-custom mb-2">
+                  <Label htmlFor="firstName" className="block text-sm font-medium text-muted-foreground mb-2">
                     First Name
                   </Label>
                   <Input
@@ -100,7 +100,7 @@ export function ContactSection() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="lastName" className="block text-sm font-medium text-neutral-custom mb-2">
+                  <Label htmlFor="lastName" className="block text-sm font-medium text-muted-foreground mb-2">
                     Last Name
                   </Label>
                   <Input
@@ -116,7 +116,7 @@ export function ContactSection() {
               </div>
               
               <div>
-                <Label htmlFor="email" className="block text-sm font-medium text-neutral-custom mb-2">
+                <Label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-2">
                   Email
                 </Label>
                 <Input
@@ -131,7 +131,7 @@ export function ContactSection() {
               </div>
               
               <div>
-                <Label htmlFor="phone" className="block text-sm font-medium text-neutral-custom mb-2">
+                <Label htmlFor="phone" className="block text-sm font-medium text-muted-foreground mb-2">
                   Phone
                 </Label>
                 <Input
@@ -146,7 +146,7 @@ export function ContactSection() {
               </div>
               
               <div>
-                <Label htmlFor="projectType" className="block text-sm font-medium text-neutral-custom mb-2">
+                <Label htmlFor="projectType" className="block text-sm font-medium text-muted-foreground mb-2">
                   Project Type
                 </Label>
                 <Select value={formData.projectType} onValueChange={(value) => handleInputChange('projectType', value)}>
@@ -163,7 +163,7 @@ export function ContactSection() {
               </div>
               
               <div>
-                <Label htmlFor="message" className="block text-sm font-medium text-neutral-custom mb-2">
+                <Label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-2">
                   Message
                 </Label>
                 <Textarea

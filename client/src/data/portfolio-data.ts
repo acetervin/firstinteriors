@@ -64,23 +64,6 @@ const projectTitles = {
   Retail: ['Boutique Store', 'Fashion Retail', 'Electronics Store', 'Jewelry Store', 'Bookstore', 'Showroom']
 };
 
-const descriptions = [
-  'Contemporary design with premium finishes and smart solutions.',
-  'Luxurious space with custom furniture and ambient lighting.',
-  'Professional environment designed for productivity and collaboration.',
-  'Sophisticated space perfect for modern living and entertaining.',
-  'Inviting area designed for comfort and functionality.',
-  'Premium retreat with high-end materials and fixtures.',
-  'Stylish design that enhances the user experience.',
-  'Modern space optimized for efficiency and aesthetics.',
-  'Elegant design featuring local cultural elements.',
-  'Innovative layout with cutting-edge technology integration.',
-  'Timeless design with contemporary touches.',
-  'Minimalist approach with maximum impact.',
-  'Warm and welcoming atmosphere with practical solutions.',
-  'Bold design statement with unique architectural features.',
-  'Sustainable design with eco-friendly materials.'
-];
 
 // Generate portfolio items
 export function generatePortfolioItems(count: number = 1000) {
@@ -92,7 +75,6 @@ export function generatePortfolioItems(count: number = 1000) {
     const year = years[Math.floor(Math.random() * years.length)];
     const titleOptions = projectTitles[category as keyof typeof projectTitles] || ['Design Project'];
     const title = titleOptions[Math.floor(Math.random() * titleOptions.length)];
-    const description = descriptions[Math.floor(Math.random() * descriptions.length)];
     
     // Get appropriate image for category
     const categoryImages = imageCategories[category as keyof typeof imageCategories] || imageCategories.Residential;
@@ -107,7 +89,6 @@ export function generatePortfolioItems(count: number = 1000) {
       id: i,
       title: `${title} ${String(i).padStart(3, '0')}`,
       category,
-      description,
       image,
       location: `${location}, Nairobi`,
       year,

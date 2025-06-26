@@ -9,32 +9,32 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-primary-custom text-white py-16">
+    <footer className="bg-background text-foreground py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4 text-accent-custom">First Interior</h3>
-            <p className="text-gray-300 mb-4">
+            <h3 className="text-2xl font-bold mb-4 text-accent">First Interior</h3>
+            <p className="text-muted-foreground mb-4">
               Transforming spaces with premium interior design solutions that blend luxury with functionality.
             </p>
             <div className="flex space-x-4">
               <a 
                 href="#" 
-                className="w-10 h-10 bg-accent-custom/20 rounded-lg flex items-center justify-center hover:bg-accent-custom transition-colors duration-300"
+                className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 bg-accent-custom/20 rounded-lg flex items-center justify-center hover:bg-accent-custom transition-colors duration-300"
+                className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 bg-accent-custom/20 rounded-lg flex items-center justify-center hover:bg-accent-custom transition-colors duration-300"
+                className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
@@ -48,7 +48,7 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   Residential Design
                 </button>
@@ -56,7 +56,7 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   Commercial Spaces
                 </button>
@@ -64,7 +64,7 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   Space Planning
                 </button>
@@ -72,7 +72,7 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   Design Consultation
                 </button>
@@ -80,7 +80,7 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   Project Management
                 </button>
@@ -94,7 +94,7 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('about')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   About Us
                 </button>
@@ -102,7 +102,7 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('about')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   Our Team
                 </button>
@@ -110,18 +110,18 @@ export function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection('portfolio')}
-                  className="hover:text-accent-custom transition-colors duration-300"
+                  className="hover:text-accent transition-colors duration-300"
                 >
                   Portfolio
                 </button>
               </li>
               <li>
-                <a href="#" className="hover:text-accent-custom transition-colors duration-300">
+                <a href="#" className="hover:text-accent transition-colors duration-300">
                   Careers
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent-custom transition-colors duration-300">
+                <a href="#" className="hover:text-accent transition-colors duration-300">
                   Blog
                 </a>
               </li>

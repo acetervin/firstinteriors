@@ -18,17 +18,13 @@ interface VirtualPortfolioGridProps {
   categories: string[];
 }
 
-const ITEMS_PER_PAGE = 20;
-const ITEM_HEIGHT = 320; // Approximate height of each item
+const ITEMS_PER_PAGE = 50;
 
 export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGridProps) {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [loadedItems, setLoadedItems] = useState<PortfolioItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState<PortfolioItem | null>(null);
-  const { ref: gridRef, hasIntersected } = useIntersectionObserver();
-  const observerRef = useRef<HTMLDivElement>(null);
+  const { ref: gridRef, hasIntersected } = useIntersectionObserver<HTMLDivElement>();
 
   const filteredItems = useMemo(() => {
     if (selectedCategory === 'All') {
@@ -37,52 +33,18 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
     return items.filter(item => item.category === selectedCategory);
   }, [items, selectedCategory]);
 
-  const loadMoreItems = async () => {
-    if (isLoading) return;
-    
-    setIsLoading(true);
-    
-    // Simulate loading delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
+  // Calculate paginated items
+  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
+  const paginatedItems = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const endIndex = currentPage * ITEMS_PER_PAGE;
-    const newItems = filteredItems.slice(startIndex, endIndex);
-    
-    if (currentPage === 1) {
-      setLoadedItems(newItems);
-    } else {
-      setLoadedItems(prev => [...prev, ...newItems]);
-    }
-    
-    setCurrentPage(prev => prev + 1);
-    setIsLoading(false);
-  };
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return filteredItems.slice(startIndex, endIndex);
+  }, [filteredItems, currentPage]);
 
-  // Reset when category changes
+  // Reset to first page when category changes
   useEffect(() => {
     setCurrentPage(1);
-    setLoadedItems([]);
-    loadMoreItems();
   }, [selectedCategory]);
-
-  // Intersection observer for infinite scroll
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !isLoading && loadedItems.length < filteredItems.length) {
-          loadMoreItems();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [loadedItems.length, filteredItems.length, isLoading]);
 
   const LazyImage = ({ item }: { item: PortfolioItem }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -110,7 +72,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
     }, [item.image, imageLoaded]);
 
     return (
-      <div className="relative overflow-hidden rounded-2xl bg-gray-200 dark:bg-gray-700 aspect-[4/3]">
+      <div className="relative overflow-hidden rounded-2xl bg-gray-200 aspect-[4/3]">
         {!imageLoaded && !imageError && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-8 h-8 border-2 border-accent/30 border-t-accent rounded-full animate-spin"></div>
@@ -118,7 +80,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
         )}
         
         {imageError && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
             <div className="text-center text-gray-400">
               <div className="w-12 h-12 mx-auto mb-2 opacity-50">📷</div>
               <p className="text-sm">Image unavailable</p>
@@ -176,7 +138,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 selectedCategory === category
                   ? 'bg-accent text-white shadow-lg'
-                  : 'bg-gray-100 dark:bg-gray-800 text-muted-foreground hover:bg-accent/10 dark:hover:bg-accent/20'
+                  : 'bg-gray-100 text-muted-foreground hover:bg-accent/10'
               }`}
             >
               {category}
@@ -192,7 +154,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
 
       {/* Results Count */}
       <div className="text-center text-muted-foreground">
-        Showing {loadedItems.length} of {filteredItems.length} projects
+        Showing {paginatedItems.length} of {filteredItems.length} projects (Page {currentPage} of {totalPages})
       </div>
 
       {/* Portfolio Grid */}
@@ -200,7 +162,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
         ref={gridRef}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
-        {loadedItems.map((item, index) => (
+        {paginatedItems.map((item, index) => (
           <div
             key={`${item.id}-${selectedCategory}`}
             className={`group cursor-pointer reveal ${hasIntersected ? 'active' : ''}`}
@@ -211,9 +173,6 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
               <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">
                 {item.title}
               </h3>
-              <p className="text-sm text-muted-foreground line-clamp-2">
-                {item.description}
-              </p>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <span>{item.location}</span>
                 <span>{item.year}</span>
@@ -223,27 +182,24 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
         ))}
       </div>
 
-      {/* Loading Indicator */}
-      {isLoading && (
-        <div className="flex justify-center py-8">
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 border-2 border-accent/30 border-t-accent rounded-full animate-spin"></div>
-            <span className="text-muted-foreground">Loading more projects...</span>
-          </div>
-        </div>
-      )}
-
-      {/* Load More Trigger */}
-      {!isLoading && loadedItems.length < filteredItems.length && (
-        <div ref={observerRef} className="h-10" />
-      )}
-
-      {/* End Message */}
-      {loadedItems.length > 0 && loadedItems.length >= filteredItems.length && (
-        <div className="text-center py-8 text-muted-foreground">
-          You've viewed all {filteredItems.length} projects in this category
-        </div>
-      )}
+      {/* Pagination Controls */}
+      <div className="flex justify-center gap-4 py-8">
+        <button
+          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+          disabled={currentPage === 1}
+        >
+          &#8592; Previous
+        </button>
+        <span className="self-center text-muted-foreground font-medium">Page {currentPage} of {totalPages}</span>
+        <button
+          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+          disabled={currentPage === totalPages}
+        >
+          Next &#8594;
+        </button>
+      </div>
 
       {/* Image Modal */}
       {selectedImage && (
@@ -262,7 +218,6 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
               <h3 className="text-white text-xl font-semibold mb-2">{selectedImage.title}</h3>
-              <p className="text-white/80 mb-2">{selectedImage.description}</p>
               <div className="flex items-center justify-between text-sm text-white/60">
                 <span>{selectedImage.location}</span>
                 <span>{selectedImage.year}</span>
