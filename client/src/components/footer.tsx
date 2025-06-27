@@ -19,21 +19,21 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://www.facebook.com/firstinterior" 
                 className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/firstinterior" 
                 className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/company/firstinterior" 
                 className="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-300"
                 aria-label="LinkedIn"
               >
@@ -44,7 +44,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-300">
+            <ul className="space-y-2 text-muted-foreground">
               <li>
                 <button 
                   onClick={() => scrollToSection('services')}
@@ -90,7 +90,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-lg font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-gray-300">
+            <ul className="space-y-2 text-muted-foreground">
               <li>
                 <button 
                   onClick={() => scrollToSection('about')}
@@ -116,12 +116,12 @@ export function Footer() {
                 </button>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors duration-300">
+                <a href="/careers" className="hover:text-accent transition-colors duration-300">
                   Careers
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors duration-300">
+                <a href="/blog" className="hover:text-accent transition-colors duration-300">
                   Blog
                 </a>
               </li>
@@ -130,7 +130,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <ul className="space-y-2 text-gray-300">
+            <ul className="space-y-2 text-muted-foreground">
               <li>Westlands, Nairobi</li>
               <li>Kenya</li>
               <li>+254 700 123 456</li>
@@ -139,8 +139,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 First Interior. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <div className="border-t border-border mt-12 pt-8 text-center text-muted-foreground">
+          <p>&copy; 2024 First Interior. All rights reserved. | <a href="/privacy-policy" className="hover:text-accent">Privacy Policy</a> | <a href="/terms-of-service" className="hover:text-accent">Terms of Service</a></p>
         </div>
       </div>
     </footer>

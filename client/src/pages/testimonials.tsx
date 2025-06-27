@@ -100,7 +100,7 @@ export default function Testimonials() {
 			</div>
 
 			{/* Hero Section */}
-			<section className="pt-24 pb-20 bg-background dark:bg-background">
+			<section className="pt-24 pb-20 bg-background">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mb-6 mt-12 text-left">
 						<BackButton />
@@ -109,10 +109,10 @@ export default function Testimonials() {
 						ref={heroRef as React.RefObject<HTMLDivElement>}
 						className={`text-center reveal ${heroIntersected ? 'active' : ''}`}
 					>
-						<h1 className="text-5xl md:text-6xl font-bold mb-6 text-accent dark:text-accent">
+						<h1 className="text-5xl md:text-6xl font-bold mb-6 text-accent">
 							Client Testimonials
 						</h1>
-						<p className="text-xl text-muted-foreground dark:text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+						<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
 							Hear what our clients have to say about working with First Interior
 						</p>
 					</div>

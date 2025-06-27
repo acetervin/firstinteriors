@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useTheme } from './theme-provider';
 
 export function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const { theme } = useTheme();
 
   useEffect(() => {
     // Simulate loading progress
@@ -25,9 +23,7 @@ export function LoadingScreen() {
   if (!isLoading) return null;
 
   return (
-    <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center transition-colors duration-300 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}
-    >
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center transition-colors duration-300 bg-white">
       <div className="text-center space-y-8">
         {/* Logo Animation */}
         <div className="relative">

@@ -132,7 +132,7 @@ export default function Home() {
           <BackButton />
         </div>
         {/* Animated Gradient Background */}
-        <div className="absolute inset-0 z-0 animate-gradient bg-gradient-to-br from-accent/30 via-primary/10 to-background/80 dark:from-accent/30 dark:via-primary/10 dark:to-background blur-2xl" />
+        <div className="absolute inset-0 z-0 animate-gradient bg-gradient-to-br from-accent/30 via-primary/10 to-background/80 blur-2xl" />
         {/* Parallax Image Layer */}
         <div 
           className="parallax-layer absolute inset-0 z-0"
@@ -190,11 +190,11 @@ export default function Home() {
         />
       </section>
       {/* Features Section */}
-      <section id="features" className="py-24 bg-background dark:bg-background transition-colors duration-500">
+      <section id="features" className="py-24 bg-[#F5FFFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={featuresRef} className={clsx('text-center mb-20 reveal', featuresIntersected && 'active')}>
-            <h2 className="text-5xl md:text-6xl font-extrabold mb-8 text-accent dark:text-accent">What We Do Best</h2>
-            <p className="text-2xl text-muted-foreground dark:text-muted-foreground max-w-3xl mx-auto">
+            <h2 className="text-5xl md:text-6xl font-extrabold mb-8 text-accent">What We Do Best</h2>
+            <p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
               Comprehensive interior design solutions tailored to your unique needs and vision
             </p>
           </div>
@@ -202,12 +202,12 @@ export default function Home() {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div key={feature.title} className="service-card bg-card/80 dark:bg-card text-card-foreground dark:text-card-foreground rounded-3xl p-10 shadow-2xl border border-border dark:border-highlight text-center backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-3xl">
-                  <div className="w-20 h-20 bg-accent/10 dark:bg-accent/20 rounded-xl flex items-center justify-center mx-auto mb-8">
-                    <Icon className="w-10 h-10 text-accent" />
+                <div key={feature.title} className="bg-white border border-accent/20 rounded-2xl shadow-lg p-10 flex flex-col items-center text-center transition-all duration-300 hover:bg-[#FFF0EB] hover:border-accent hover:shadow-2xl cursor-pointer">
+                  <div className="w-16 h-16 flex items-center justify-center mb-6 rounded-full bg-[#FFF7F3] transition-colors duration-300 group-hover:bg-accent/10">
+                    <Icon className="w-8 h-8 text-accent" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-primary dark:text-primary">{feature.title}</h3>
-                  <p className="text-muted-foreground dark:text-muted-foreground mb-6">{feature.description}</p>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{feature.title}</h3>
+                  <p className="text-muted-foreground mb-2">{feature.description}</p>
                 </div>
               );
             })}
@@ -277,7 +277,7 @@ export default function Home() {
       </section>
 
       {/* Services Preview Section */}
-      <section className="py-20 bg-gray-50 dark:bg-[#181818]">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Our Expertise</h2>
@@ -304,7 +304,7 @@ export default function Home() {
                 image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
               }
             ].map((service, index) => (
-              <div key={service.title} className="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div key={service.title} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <img src={service.image} alt={service.title} className="w-full h-48 object-cover" />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
@@ -325,7 +325,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section className="py-20 bg-[#F5FFFA] dark:bg-[#181818]">
+      <section className="py-20 bg-[#F5FFFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Featured Projects</h2>
@@ -353,11 +353,11 @@ export default function Home() {
               }
             ].map((project, index) => (
               <div key={project.title} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-2xl">
+                <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white border border-accent/20">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110 opacity-90"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="flex items-center justify-center h-full">
@@ -365,12 +365,12 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="absolute top-4 left-4">
-                    <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
                       {project.category}
                     </span>
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold mt-4 group-hover:text-accent transition-colors">
+                <h3 className="text-lg font-semibold mt-4 group-hover:text-accent transition-colors text-gray-900">
                   {project.title}
                 </h3>
               </div>
@@ -380,7 +380,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Preview */}
-      <section className="py-20 bg-gray-50 dark:bg-[#181818]">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">What Our Clients Say</h2>
@@ -401,7 +401,7 @@ export default function Home() {
                 image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
               }
             ].map((testimonial, index) => (
-              <div key={testimonial.name} className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg">
+              <div key={testimonial.name} className="bg-white p-8 rounded-2xl shadow-lg">
                 <p className="text-muted-foreground mb-6 italic leading-relaxed">
                   "{testimonial.text}"
                 </p>
@@ -432,11 +432,11 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#F5FFFA] dark:bg-[#23262F] flex items-center justify-center">
+      <section className="py-20 bg-[#F5FFFA] flex items-center justify-center">
         <div className="w-full max-w-xl mx-auto px-4">
-          <div className="rounded-2xl shadow-2xl bg-white/80 dark:bg-[#2c2f36]/90 p-8 text-center border border-accent/10">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary dark:text-white drop-shadow-lg">Ready to Transform Your Space?</h2>
-            <p className="text-lg mb-8 max-w-xl mx-auto opacity-90 text-muted-foreground dark:text-muted-foreground">
+          <div className="rounded-2xl shadow-2xl bg-white/80 p-8 text-center border border-accent/10">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary drop-shadow-lg">Ready to Transform Your Space?</h2>
+            <p className="text-lg mb-8 max-w-xl mx-auto opacity-90 text-muted-foreground">
               Let's bring your vision to life with our expert design services. Explore our portfolio or start your project today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -446,7 +446,7 @@ export default function Home() {
                 </button>
               </Link>
               <Link href="/contact">
-                <button className="border-2 border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-bold text-base shadow-xl transition-all duration-300 w-full sm:w-auto bg-white dark:bg-transparent">
+                <button className="border-2 border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 rounded-full font-bold text-base shadow-xl transition-all duration-300 w-full sm:w-auto bg-white">
                   Start Your Project
                 </button>
               </Link>

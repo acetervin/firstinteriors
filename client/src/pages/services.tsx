@@ -148,7 +148,7 @@ export default function Services() {
 			</div>
 
 			{/* Hero Section */}
-			<section className="pt-24 pb-20 bg-background dark:bg-background">
+			<section className="pt-24 pb-20 bg-background">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="mb-6 mt-12 text-left">
 						<BackButton />
@@ -159,10 +159,10 @@ export default function Services() {
 							heroIntersected ? 'active' : ''
 						}`}
 					>
-						<h1 className="text-5xl md:text-6xl font-bold mb-6 text-accent dark:text-accent">
+						<h1 className="text-5xl md:text-6xl font-bold mb-6 text-accent">
 							Our Services
 						</h1>
-						<p className="text-xl text-muted-foreground dark:text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+						<p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
 							Discover our full range of interior design services for residential and
 							commercial spaces
 						</p>

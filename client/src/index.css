@@ -132,11 +132,14 @@
     border: 1px solid #FFD700;  /* Gold */
   }
 
-  .mobile-menu {
-    background: var(--background);
-    border: 1px solid #FFD700;  /* Gold */
-    box-shadow: 0 4px 20px rgba(255, 0, 0, 0.1);
-  }
+  /*
+    .mobile-menu {
+      background: var(--background);
+      border: 1px solid #FFD700;  // Gold
+      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.1);
+    }
+    (Removed: not used in navigation component, all menu styling is handled by Tailwind classes)
+  */
 
   /* Service Cards */
   .service-card {
