@@ -302,4 +302,41 @@
   section.bg-background {
     background-color: #FFFAFA;  /* Snow white */
   }
+  @layer utilities {
+  
+  .flex-responsive {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: stretch;
+  }
+}
+
+  /* Responsive Font Sizes */
+  .text-responsive {
+    font-size: 1.125rem; /* Default size */
+  }
+
+  @media (max-width: 768px) {
+    .text-responsive {
+      font-size: 1rem; /* Reduce size on smaller screens */
+    }
+  }
+
+  @media (max-width: 640px) {
+    .text-responsive {
+      font-size: 0.875rem; /* Further reduce size on mobile */
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 80%; /* Reduce all rem-based sizes by 20% on mobile */
+  }
+  body {
+    transform: scale(1.007);
+    transform-origin: top center;
+  }
 }

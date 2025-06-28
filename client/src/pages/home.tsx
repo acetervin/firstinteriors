@@ -198,16 +198,16 @@ export default function Home() {
               Comprehensive interior design solutions tailored to your unique needs and vision
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div key={feature.title} className="bg-white border border-accent/20 rounded-2xl shadow-lg p-10 flex flex-col items-center text-center transition-all duration-300 hover:bg-[#FFF0EB] hover:border-accent hover:shadow-2xl cursor-pointer">
-                  <div className="w-16 h-16 flex items-center justify-center mb-6 rounded-full bg-[#FFF7F3] transition-colors duration-300 group-hover:bg-accent/10">
-                    <Icon className="w-8 h-8 text-accent" />
+                <div key={feature.title} className="bg-white border border-accent/20 rounded-2xl shadow-lg p-6 sm:p-10 flex flex-col items-center text-center transition-all duration-300 hover:bg-[#FFF0EB] hover:border-accent hover:shadow-2xl cursor-pointer">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mb-4 sm:mb-6 rounded-full bg-[#FFF7F3] transition-colors duration-300 group-hover:bg-accent/10">
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-accent" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{feature.title}</h3>
-                  <p className="text-muted-foreground mb-2">{feature.description}</p>
+                  <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 text-gray-900">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-1 sm:mb-2">{feature.description}</p>
                 </div>
               );
             })}
