@@ -66,10 +66,10 @@ export function PortfolioSection() {
 						hasIntersected ? 'active' : ''
 					}`}
 				>
-					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-accent">
 						Featured Projects
 					</h2>
-					<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+					<p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
 						Explore our portfolio of stunning interiors that showcase our
 						commitment to excellence
 					</p>
@@ -90,7 +90,7 @@ export function PortfolioSection() {
 								className="w-full h-64 object-cover"
 							/>
 							<div className="p-6 bg-background">
-								<h3 className="text-xl font-semibold mb-2 text-primary">
+								<h3 className="text-lg sm:text-xl font-semibold mb-2 text-primary">
 									{item.title}
 								</h3>
 								<p className="text-muted-foreground">
@@ -106,7 +106,7 @@ export function PortfolioSection() {
 						hasIntersected ? 'active' : ''
 					}`}
 				>
-					<button className="btn-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+					<button className="btn-primary px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
 						View All Projects
 					</button>
 				</div>

@@ -56,10 +56,10 @@ export function ServicesSection() {
 						hasIntersected ? 'active' : ''
 					}`}
 				>
-					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-accent">
 						What We Do Best
 					</h2>
-					<p className="text-2xl text-muted-foreground max-w-3xl mx-auto">
+					<p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
 						Comprehensive interior design solutions tailored to your lifestyle and
 						preferences
 					</p>
@@ -79,7 +79,7 @@ export function ServicesSection() {
 								<div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mb-6">
 									<Icon className="w-8 h-8 text-accent" />
 								</div>
-								<h3 className="text-xl font-semibold mb-4 text-primary">
+								<h3 className="text-lg sm:text-xl font-semibold mb-4 text-primary">
 									{service.title}
 								</h3>
 								<p className="text-muted-foreground leading-relaxed">

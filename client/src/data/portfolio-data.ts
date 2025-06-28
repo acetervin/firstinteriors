@@ -92,7 +92,8 @@ export function generatePortfolioItems(count: number = 1000) {
       image,
       location: `${location}, Nairobi`,
       year,
-      featured: i <= 20 // Mark first 20 as featured
+      featured: i <= 20, // Mark first 20 as featured
+      description: `A beautiful ${category.toLowerCase()} project titled '${title}' completed in ${year} at ${location}, Nairobi.`
     });
   }
   

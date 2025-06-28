@@ -27,20 +27,20 @@ export function CTASection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div ref={ref} className={`text-center reveal ${hasIntersected ? 'active' : ''}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Space?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Space?</h2>
+          <p className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto opacity-90">
             Let's bring your vision to life with our expert design services. Contact us today for a free consultation.
           </p>
           <div className="space-x-4">
             <button 
               onClick={() => scrollToSection('contact')}
-              className="btn-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className="btn-primary px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
               Start Your Project
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="btn-outline px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+              className="btn-outline px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all duration-300"
             >
               Schedule Consultation
             </button>

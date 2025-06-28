@@ -47,10 +47,10 @@ export function TestimonialsSection() {
 						hasIntersected ? 'active' : ''
 					}`}
 				>
-					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">
+					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-accent">
 						What Our Clients Say
 					</h2>
-					<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+					<p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
 						Hear from our satisfied clients about their experience with First
 						Interior
 					</p>
@@ -72,7 +72,7 @@ export function TestimonialsSection() {
 									))}
 								</div>
 							</div>
-							<p className="text-muted-foreground mb-6 italic leading-relaxed">
+							<p className="text-sm sm:text-base text-muted-foreground mb-6 italic leading-relaxed">
 								"{testimonial.text}"
 							</p>
 							<div className="flex items-center">

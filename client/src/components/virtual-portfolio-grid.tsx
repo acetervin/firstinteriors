@@ -110,14 +110,6 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
             {item.category}
           </span>
         </div>
-
-        {item.featured && (
-          <div className="absolute top-4 right-4">
-            <span className="bg-yellow-500 text-white px-2 py-1 rounded text-xs font-medium">
-              Featured
-            </span>
-          </div>
-        )}
       </div>
     );
   };
@@ -160,7 +152,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
       {/* Portfolio Grid */}
       <div 
         ref={gridRef}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
         {paginatedItems.map((item, index) => (
           <div

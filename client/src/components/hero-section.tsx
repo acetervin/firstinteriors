@@ -86,23 +86,23 @@ export function HeroSection() {
       
       {/* Hero Content */}
       <div ref={heroRef} className="relative z-20 text-center text-white max-w-4xl mx-auto px-4">
-        <h1 className="hero-title text-5xl md:text-7xl font-bold mb-6 opacity-0">
+        <h1 className="hero-title text-4xl sm:text-5xl md:text-7xl font-bold mb-6 opacity-0">
           Transforming Spaces,<br />
           <span className="text-accent">Creating Dreams</span>
         </h1>
-        <p className="hero-subtitle text-xl md:text-2xl mb-8 font-light opacity-0">
+        <p className="hero-subtitle text-lg sm:text-xl md:text-2xl mb-8 font-light opacity-0">
           Premium interior design solutions that blend luxury with functionality
         </p>
         <div className="hero-buttons space-x-4 opacity-0">
           <button 
             onClick={() => scrollToSection('portfolio')}
-            className="btn-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+            className="btn-primary px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
           >
             Explore Our Work
           </button>
           <button 
             onClick={() => scrollToSection('contact')}
-            className="btn-outline px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+            className="btn-outline px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all duration-300"
           >
             Get Consultation
           </button>
