@@ -1,58 +1,22 @@
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import { useQuery } from '@tanstack/react-query';
+import { PortfolioItem } from '@/types/portfolio';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const portfolioItems = [
-	{
-		id: 1,
-		title: 'Modern Kitchen Design',
-		description:
-			'Contemporary kitchen with premium finishes and smart storage solutions.',
-		image:
-			'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400',
-	},
-	{
-		id: 2,
-		title: 'Master Bedroom Suite',
-		description:
-			'Luxurious bedroom design with custom furniture and ambient lighting.',
-		image:
-			'https://images.unsplash.com/photo-1631679706909-1844bbd07221?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400',
-	},
-	{
-		id: 3,
-		title: 'Corporate Office',
-		description:
-			'Professional workspace designed for productivity and collaboration.',
-		image:
-			'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400',
-	},
-	{
-		id: 4,
-		title: 'Dining Room Elegance',
-		description:
-			'Sophisticated dining space perfect for entertaining guests.',
-		image:
-			'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400',
-	},
-	{
-		id: 5,
-		title: 'Living Room Comfort',
-		description:
-			'Inviting living space designed for relaxation and family time.',
-		image:
-			'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400',
-	},
-	{
-		id: 6,
-		title: 'Spa-Like Bathroom',
-		description:
-			'Luxurious bathroom retreat with premium materials and fixtures.',
-		image:
-			'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400',
-	},
-];
+async function fetchPortfolioItems(): Promise<PortfolioItem[]> {
+	const response = await fetch('/api/portfolio');
+	if (!response.ok) {
+		throw new Error('Network response was not ok');
+	}
+	return response.json();
+}
 
 export function PortfolioSection() {
 	const { ref, hasIntersected } = useIntersectionObserver<HTMLDivElement>();
+	const { data: portfolioItems = [], isLoading, isError } = useQuery({
+		queryKey: ['portfolioItems'],
+		queryFn: fetchPortfolioItems,
+	});
 
 	return (
 		<section
@@ -76,29 +40,37 @@ export function PortfolioSection() {
 				</div>
 
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{portfolioItems.map((item, index) => (
-						<div
-							key={item.id}
-							className={`portfolio-item rounded-2xl overflow-hidden shadow-lg reveal ${
-								hasIntersected ? 'active' : ''
-							}`}
-							style={{ animationDelay: `${index * 0.1}s` }}
-						>
-							<img
-								src={item.image}
-								alt={item.title}
-								className="w-full h-64 object-cover"
-							/>
-							<div className="p-6 bg-background">
-								<h3 className="text-lg sm:text-xl font-semibold mb-2 text-primary">
-									{item.title}
-								</h3>
-								<p className="text-muted-foreground">
-									{item.description}
-								</p>
+					{isLoading ? (
+						Array.from({ length: 6 }).map((_, index) => (
+							<Skeleton key={index} className="h-96 w-full" />
+						))
+					) : isError ? (
+						<div className="text-center text-red-500 col-span-full">Error loading portfolio items.</div>
+					) : (
+						portfolioItems.slice(0, 6).map((item, index) => (
+							<div
+								key={item.id}
+								className={`portfolio-item rounded-2xl overflow-hidden shadow-lg reveal ${
+									hasIntersected ? 'active' : ''
+								}`}
+								style={{ animationDelay: `${index * 0.1}s` }}
+							>
+								<img
+									src={item.image}
+									alt={item.title}
+									className="w-full h-64 object-cover"
+								/>
+								<div className="p-6 bg-background">
+									<h3 className="text-lg sm:text-xl font-semibold mb-2 text-primary">
+										{item.title}
+									</h3>
+									<p className="text-muted-foreground">
+										{item.description}
+									</p>
+								</div>
 							</div>
-						</div>
-					))}
+						))
+					)}
 				</div>
 
 				<div

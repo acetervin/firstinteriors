@@ -1,13 +1,29 @@
 import { useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { VirtualPortfolioGrid } from '@/components/virtual-portfolio-grid';
-import { portfolioItems, portfolioCategories } from '@/data/portfolio-data';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { BackButton } from '@/components/back-button';
+import { PortfolioItem } from '@/types/portfolio';
+import { Skeleton } from '@/components/ui/skeleton';
+
+async function fetchPortfolioItems(): Promise<PortfolioItem[]> {
+  const response = await fetch('/api/portfolio');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+}
 
 export default function Portfolio() {
   const { ref: heroRef, hasIntersected: heroIntersected } = useIntersectionObserver();
+  const { data: portfolioItems = [], isLoading, isError } = useQuery({
+    queryKey: ['portfolioItems'],
+    queryFn: fetchPortfolioItems,
+  });
+
+  const portfolioCategories = ['All', ...Array.from(new Set(portfolioItems.map(item => item.category)))];
 
   useEffect(() => {
     document.title = 'Portfolio - First Interior | 1000+ Interior Design Projects';
@@ -56,10 +72,20 @@ export default function Portfolio() {
       {/* Portfolio Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <VirtualPortfolioGrid 
-            items={portfolioItems} 
-            categories={portfolioCategories}
-          />
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {Array.from({ length: 12 }).map((_, index) => (
+                <Skeleton key={index} className="h-64 w-full" />
+              ))}
+            </div>
+          ) : isError ? (
+            <div className="text-center text-red-500">Error loading portfolio items.</div>
+          ) : (
+            <VirtualPortfolioGrid 
+              items={portfolioItems} 
+              categories={portfolioCategories}
+            />
+          )}
         </div>
       </section>
 
