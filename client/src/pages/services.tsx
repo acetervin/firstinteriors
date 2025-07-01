@@ -330,12 +330,12 @@ export default function Services() {
 			</section>
 
 			{/* CTA Section */}
-			<section className="py-20 bg-primary-custom text-white">
+			<section className="py-20 bg-primary-custom">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<h2 className="text-4xl md:text-5xl font-bold mb-6">
+					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent drop-shadow-lg">
 						Ready to Get Started?
 					</h2>
-					<p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+					<p className="text-xl mb-8 max-w-3xl mx-auto text-muted-foreground ">
 						Let's discuss your project and create a custom solution that fits your
 						needs and budget.
 					</p>

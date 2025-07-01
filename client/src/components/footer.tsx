@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="bg-background text-foreground py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+        <div className="custom-footer-sections">
           <div>
             <h3 className="text-xl sm:text-2xl font-bold mb-4 text-accent">First Interior</h3>
             <p className="text-sm sm:text-base text-muted-foreground mb-4">

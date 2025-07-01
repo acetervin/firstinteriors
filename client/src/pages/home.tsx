@@ -142,7 +142,7 @@ export default function Home() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             // Remove backgroundAttachment: 'fixed' to avoid stacking issues on some browsers
-            opacity: 0.5,
+            opacity: 0.6,
             zIndex: 0,
           }}
         />
@@ -182,12 +182,12 @@ export default function Home() {
             <ChevronDown size={28} />
           </button>
         </div>
-        {/* Gradient Fade Transition to Next Section */}
+        {/* Gradient Fade Transition to Next Section 
         <div className="pointer-events-none absolute bottom-0 left-0 w-full h-32 z-20"
           style={{
             background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--background) 100%)"
           }}
-        />
+        />*/}
       </section>
       {/* Features Section */}
       <section id="features" className="py-24 bg-[#F5FFFA]">
@@ -304,20 +304,35 @@ export default function Home() {
                 image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
               }
             ].map((service, index) => (
-              <div key={service.title} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <img src={service.image} alt={service.title} className="w-full h-48 object-cover" />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
+              <div
+                key={service.title}
+                className="service-card group relative flex flex-col items-stretch overflow-hidden cursor-pointer"
+                style={{ minHeight: '370px' }}
+              >
+                {/* Accent Bar
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-yellow-400 via-red-300 to-red-400 z-10" />
+                 */}
+                 {/* Card Image */}
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-48 object-cover rounded-t-[1.5rem] mb-0 transition-transform duration-500 group-hover:scale-105"
+                  
+                />
+                {/* Card Content */}
+                <div className="flex-1 flex flex-col justify-between p-8 pt-6">
+                  <h3 className="card-title text-[1.35rem] font-bold mb-2 text-gray-900 group-hover:text-accent transition-colors">{service.title}</h3>
+                  <p className="card-desc text-[1.05rem] text-[#555] mb-0 leading-relaxed">{service.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-left">
             <Link href="/services">
-              <button className="bg-accent hover:bg-accent/90 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+              <button className="text-accent hover:text-accent/80 font-semibold flex items-center group bg-transparent px-0 py-0 text-lg transition-colors duration-300">
                 View All Services
+                <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
           </div>
@@ -359,11 +374,6 @@ export default function Home() {
                     alt={project.title}
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110 opacity-90"
                   />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex items-center justify-center h-full">
-                      <span className="text-white font-semibold">View Project</span>
-                    </div>
-                  </div>
                   <div className="absolute top-4 left-4">
                     <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
                       {project.category}
@@ -375,6 +385,15 @@ export default function Home() {
                 </h3>
               </div>
             ))}
+          </div>
+
+          <div className="text-left">
+            <Link href="/portfolio">
+              <button className="text-accent hover:text-accent/80 font-semibold flex items-center group bg-transparent px-0 py-0 text-lg transition-colors duration-300">
+                View All Projects
+                <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -141,7 +141,7 @@ export default function Testimonials() {
 			<section className="py-20 gradient-bg">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div ref={testimonialsRef} className={`text-center mb-16 reveal ${testimonialsIntersected ? 'active' : ''}`}>
-						<h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">What Our Clients Say</h2>
+						<h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">What Our Clients Say</h2>
 						<p className="text-xl text-neutral-custom max-w-3xl mx-auto">
 							Real stories from real people who trusted us to transform their spaces
 						</p>
@@ -194,8 +194,8 @@ export default function Testimonials() {
 			<section className="py-20 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-16">
-						<h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">Video Testimonials</h2>
-						<p className="text-xl text-neutral-custom max-w-3xl mx-auto">
+						<h2 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Video Testimonials</h2>
+						<p className="text-muted-foreground text-neutral-custom max-w-3xl mx-auto">
 							Watch our clients share their First Interior experience
 						</p>
 					</div>
@@ -248,8 +248,8 @@ export default function Testimonials() {
 			{/* CTA Section */}
 			<section className="py-20 bg-primary-custom text-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-					<h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Join Our Happy Clients?</h2>
-					<p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+					<h2 className="text-accent md:text-5xl font-bold mb-6">Ready to Join Our Happy Clients?</h2>
+					<p className="text-muted-foreground mb-8 max-w-3xl mx-auto opacity-90">
 						Experience the First Interior difference and create your own success story
 					</p>
 					<div className="space-x-4">
