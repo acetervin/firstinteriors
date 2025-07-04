@@ -23,7 +23,19 @@ export default function Portfolio() {
     queryFn: fetchPortfolioItems,
   });
 
-  const portfolioCategories = ['All', ...Array.from(new Set(portfolioItems.map(item => item.category)))];
+  const portfolioCategories = [
+    'All',
+    'Bathrooms',
+    'Doors & Door Frames',
+    'Floors & Ceilings',
+    'Gazebo',
+    'Gypsum',
+    'Kitchens',
+    'Office Desks',
+    'Painting',
+    'Stairs',
+    'Wardrobes',
+  ];
 
   useEffect(() => {
     document.title = 'Portfolio - First Interior | 1000+ Interior Design Projects';
