@@ -36,7 +36,7 @@ export function Navigation() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <img src={logo} alt="Logo" className="h-10 w-10 rounded-full shadow-md border-2 border-accent/30 group-hover:scale-105 transition-transform" />
-          <span className="font-extrabold text-xl text-accent tracking-tight hidden sm:inline">InteriorX</span>
+          <span className="font-extrabold text-xl text-accent tracking-tight hidden sm:inline">First Interior</span>
         </Link>
         {/* Desktop Nav */}
         <div className="hidden custom-md:flex flex-1 items-center justify-center">
