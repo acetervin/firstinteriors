@@ -177,7 +177,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
       {/* Pagination Controls */}
       <div className="flex justify-center gap-4 py-8">
         <button
-          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-gray-800  focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
           disabled={currentPage === 1}
         >
@@ -185,7 +185,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
         </button>
         <span className="self-center text-muted-foreground font-medium">Page {currentPage} of {totalPages}</span>
         <button
-          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-white focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
           disabled={currentPage === totalPages}
         >

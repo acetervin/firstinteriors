@@ -57,15 +57,15 @@ export default function Portfolio() {
               Our Portfolio
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Explore our extensive collection of over 1,000 interior design projects showcasing our expertise across all categories
+              Explore our extensive collection of over 100 interior design projects showcasing our expertise across all categories
             </p>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
               <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">1000+</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">100+</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wide">Projects</div>
               </div>
               <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">9</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">10</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wide">Categories</div>
               </div>
               <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
