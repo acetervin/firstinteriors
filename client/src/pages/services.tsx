@@ -227,9 +227,9 @@ export default function Services() {
 
 									<div className="border-t pt-6">
 										<div className="flex items-center justify-between">
-											<span className="text-2xl font-bold text-accent">
+											{/* <span className="text-2xl font-bold text-accent">
 												{service.price}
-											</span>
+											</span> */}
 											<Link href="/contact">
 												<button className="btn-primary px-6 py-2 rounded-lg font-semibold text-sm">
 													Get Quote

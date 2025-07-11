@@ -24,6 +24,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState<PortfolioItem | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const { ref: gridRef, hasIntersected } = useIntersectionObserver<HTMLDivElement>();
 
   const filteredItems = useMemo(() => {
@@ -45,6 +46,33 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory]);
+
+  const filteredImages = useMemo(() => {
+    if (selectedCategory === 'All') return items;
+    return items.filter(item => item.category === selectedCategory);
+  }, [items, selectedCategory]);
+
+  const openImage = (item: PortfolioItem) => {
+    const idx = filteredImages.findIndex(i => i.id === item.id);
+    setSelectedImage(item);
+    setSelectedImageIndex(idx !== -1 ? idx : null);
+  };
+
+  const showPrev = () => {
+    if (selectedImageIndex !== null && selectedImageIndex > 0) {
+      setSelectedImage(filteredImages[selectedImageIndex - 1]);
+      setSelectedImageIndex(selectedImageIndex - 1);
+    }
+  };
+  const showNext = () => {
+    if (
+      selectedImageIndex !== null &&
+      selectedImageIndex < filteredImages.length - 1
+    ) {
+      setSelectedImage(filteredImages[selectedImageIndex + 1]);
+      setSelectedImageIndex(selectedImageIndex + 1);
+    }
+  };
 
   const LazyImage = ({ item }: { item: PortfolioItem }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -98,7 +126,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
 
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <button
-            onClick={() => setSelectedImage(item)}
+            onClick={() => openImage(item)}
             className="bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors"
           >
             <Eye size={20} />
@@ -195,28 +223,46 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
 
       {/* Image Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="relative max-w-4xl max-h-[90vh] mx-4">
+        <>
+          {/* Background overlay behind nav and modal */}
+          <div className="fixed inset-0 z-20 bg-black/80 backdrop-blur-sm" />
+          {/* Modal content, image below nav */}
+          <div className="fixed left-0 right-0 bottom-0 z-30 flex flex-col items-center justify-center animate-fadeIn" style={{ top: '5rem' }}>
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 text-xl font-bold"
+              className="absolute top-6 right-6 text-white hover:text-accent text-3xl font-bold bg-black/70 rounded-full w-12 h-12 flex items-center justify-center z-10 shadow-lg border border-white/20 transition-all duration-200"
+              aria-label="Close image viewer"
             >
               ✕
             </button>
-            <img
-              src={selectedImage.image}
-              alt={selectedImage.title}
-              className="max-w-full max-h-full object-contain rounded-lg"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
-              <h3 className="text-white text-xl font-semibold mb-2">{selectedImage.title}</h3>
-              <div className="flex items-center justify-between text-sm text-white/60">
-                <span>{selectedImage.location}</span>
-                <span>{selectedImage.year}</span>
+            <div className="flex flex-col items-center justify-center w-full h-full px-4">
+              <div className="relative flex items-center justify-center w-full max-w-3xl mx-auto">
+                <button
+                  onClick={showPrev}
+                  disabled={selectedImageIndex === 0}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center z-10 shadow-lg border border-white/20 text-xl hover:bg-accent/80 disabled:opacity-40 disabled:cursor-not-allowed md:w-12 md:h-12 md:text-2xl"
+                  aria-label="Previous image"
+                >
+                  &#8592;
+                </button>
+                <img
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
+                  className="w-auto max-w-full max-h-[60vh] md:max-h-[80vh] object-contain rounded-2xl shadow-2xl border-4 border-white/10 animate-fadeIn"
+                  style={{ boxShadow: '0 8px 40px 0 rgba(73, 73, 73, 0.7)' }}
+                />
+                <button
+                  onClick={showNext}
+                  disabled={selectedImageIndex === filteredImages.length - 1}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center z-10 shadow-lg border border-white/20 text-xl hover:bg-accent/80 disabled:opacity-40 disabled:cursor-not-allowed md:w-12 md:h-12 md:text-2xl"
+                  aria-label="Next image"
+                >
+                  &#8594;
+                </button>
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

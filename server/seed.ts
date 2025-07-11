@@ -103,12 +103,6 @@ const wardrobeImages = [
   'https://i.postimg.cc/ZKCpghcr/Whats-App-Image-2024-03-11-at-12-40-31-PM-6-750x499.jpg',
   'https://i.postimg.cc/yYtcCrQ2/Whats-App-Image-2024-03-11-at-12-40-31-PM-7-750x499.jpg',
   'https://i.postimg.cc/kgS8JFLG/Whats-App-Image-2024-03-11-at-12-40-31-PM-750x499.jpg',
-  'https://i.postimg.cc/8kb1zsGd/2000-61d88b4c0d2d3-750x499-jpg.jpg',
-  'https://i.postimg.cc/tT39P4xj/2000-61d88ba029c95-750x499-jpg.jpg',
-  'https://i.postimg.cc/hvMgyZsZ/2000-61e555aad117a-750x499-jpg.jpg',
-  'https://i.postimg.cc/QCjhqZQW/2000-61e555ab25cb5-750x499-jpg.jpg',
-  'https://i.postimg.cc/qMMph0BP/2000-61e555ab31377-750x499-jpg.jpg',
-  'https://i.postimg.cc/65jtCSyy/2000-61e555ab59611-750x499-jpg.jpg',
 ];
 
 const doorImages = [
@@ -198,6 +192,11 @@ const wardrobesImages = [
   'https://i.postimg.cc/kgS8JFLG/Whats-App-Image-2024-03-11-at-12-40-31-PM-750x499.jpg',
 ];
 
+const paintingImages = [
+  'https://cdn.pixabay.com/photo/2016/11/19/17/28/art-1840481_1280.jpg',
+  'https://cdn.pixabay.com/photo/2020/03/22/02/14/brush-4955638_1280.jpg',
+];
+
 const categories = [
 	'Bathrooms',
 	'Doors & Door Frames',
@@ -242,6 +241,9 @@ const portfolioData = categories.flatMap((category) => {
   } else if (category === 'Bathrooms') {
     count = bathroomsImages.length;
     images = bathroomsImages;
+  } else if (category === 'Painting') {
+    count = paintingImages.length;
+    images = paintingImages;
   }
     
   return Array.from({ length: count }, (_, i) => ({

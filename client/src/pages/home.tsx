@@ -309,15 +309,11 @@ export default function Home() {
                 className="service-card group relative flex flex-col items-stretch overflow-hidden cursor-pointer"
                 style={{ minHeight: '370px' }}
               >
-                {/* Accent Bar
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-yellow-400 via-red-300 to-red-400 z-10" />
-                 */}
-                 {/* Card Image */}
+                {/* Card Image */}
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-48 object-cover rounded-t-[1.5rem] mb-0 transition-transform duration-500 group-hover:scale-105"
-                  
+                  className="w-full h-48 object-cover rounded-t-2xl rounded-b-2xl mb-0 transition-transform duration-500 group-hover:scale-105"
                 />
                 {/* Card Content */}
                 <div className="flex-1 flex flex-col justify-between p-8 pt-6">

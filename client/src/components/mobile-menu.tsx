@@ -3,7 +3,7 @@ import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import logo from '@/assets/logo.jpg';
+import logo from '@/assets/logo-new.png';
 
 const navItems = [
 
@@ -38,7 +38,9 @@ export function MobileMenu() {
               onClick={() => setIsOpen(false)}
             >
               <img src={logo} alt="Logo" className="h-10 w-10 rounded-full shadow-md border-2 border-accent/30" />
-              <span className="font-extrabold text-xl text-accent tracking-tight">InteriorX</span>
+              <span className="font-extrabold text-xl tracking-tight">
+                <span className="text-accent">First</span> <span className="text-black">Interior</span>
+              </span>
             </Link>
             <nav className="flex flex-col gap-4 pt-4">
               {navItems.map((item, index) => (

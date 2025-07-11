@@ -1,13 +1,7 @@
+import { Link } from 'wouter';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
 export function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className="bg-background text-foreground py-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,47 +37,22 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-base sm:text-lg font-semibold mb-4">Services</h4>
+            <h4 className="text-base sm:text-lg font-semibold mb-4">Navigation</h4>
             <ul className="text-sm sm:text-base space-y-2 text-muted-foreground">
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  Residential Design
-                </button>
+                <Link href="/" className="hover:text-accent transition-colors duration-300">Home</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  Commercial Spaces
-                </button>
+                <Link href="/about" className="hover:text-accent transition-colors duration-300">About</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  Space Planning
-                </button>
+                <Link href="/services" className="hover:text-accent transition-colors duration-300">Services</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  Design Consultation
-                </button>
+                <Link href="/portfolio" className="hover:text-accent transition-colors duration-300">Portfolio</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  Project Management
-                </button>
+                <Link href="/contact" className="hover:text-accent transition-colors duration-300">Contact</Link>
               </li>
             </ul>
           </div>
@@ -92,38 +61,19 @@ export function Footer() {
             <h4 className="text-base sm:text-lg font-semibold mb-4">Company</h4>
             <ul className="text-sm sm:text-base space-y-2 text-muted-foreground">
               <li>
-                <button 
-                  onClick={() => scrollToSection('about')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  About Us
-                </button>
+                <Link href="/about" className="hover:text-accent transition-colors duration-300">About Us</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('about')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  Our Team
-                </button>
+                <Link href="/about" className="hover:text-accent transition-colors duration-300">Our Team</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('portfolio')}
-                  className="hover:text-accent transition-colors duration-300"
-                >
-                  Portfolio
-                </button>
+                <Link href="/portfolio" className="hover:text-accent transition-colors duration-300">Portfolio</Link>
               </li>
               <li>
-                <a href="/careers" className="hover:text-accent transition-colors duration-300">
-                  Careers
-                </a>
+                <Link href="/careers" className="hover:text-accent transition-colors duration-300">Careers</Link>
               </li>
               <li>
-                <a href="/blog" className="hover:text-accent transition-colors duration-300">
-                  Blog
-                </a>
+                <Link href="/blog" className="hover:text-accent transition-colors duration-300">Blog</Link>
               </li>
             </ul>
           </div>
@@ -140,7 +90,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border mt-12 pt-8 text-center text-muted-foreground">
-          <p className="text-xs sm:text-sm">&copy; 2024 First Interior. All rights reserved. | <a href="/privacy-policy" className="hover:text-accent">Privacy Policy</a> | <a href="/terms-of-service" className="hover:text-accent">Terms of Service</a></p>
+          <p className="text-xs sm:text-sm">&copy; 2025 First Interior. All rights reserved. | <Link href="/privacy-policy" className="hover:text-accent">Privacy Policy</Link> | <Link href="/terms-of-service" className="hover:text-accent">Terms of Service</Link></p>
         </div>
       </div>
     </footer>

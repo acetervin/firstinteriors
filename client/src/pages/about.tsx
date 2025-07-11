@@ -199,21 +199,21 @@ export default function About() {
 								name: 'Sarah Mitchell',
 								role: 'Creative Director',
 								image:
-									'https://images.unsplash.com/photo-1494790108755-2616b45bb442?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=400',
+									'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 								bio: 'With over 12 years of experience, Sarah leads our creative vision with passion and expertise.',
 							},
 							{
 								name: 'Michael Chen',
 								role: 'Senior Designer',
 								image:
-									'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=400',
+									'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 								bio: 'Michael specializes in modern residential design and sustainable interior solutions.',
 							},
 							{
 								name: 'Emily Rodriguez',
 								role: 'Project Manager',
 								image:
-									'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=400',
+									'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 								bio: 'Emily ensures every project runs smoothly from concept to completion with meticulous attention.',
 							},
 						].map((member, index) => (
