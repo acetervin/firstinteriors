@@ -407,13 +407,13 @@ export default function Home() {
                 name: "Sarah Johnson",
                 role: "Homeowner, Karen",
                 text: "First Interior transformed our home beyond our wildest dreams. Their attention to detail and creative vision made our space both beautiful and functional.",
-                image: "https://images.unsplash.com/photo-1494790108755-2616b45bb442?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+                image: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
               },
               {
                 name: "Michael Chen", 
                 role: "CEO, TechCorp",
                 text: "The team's professionalism and expertise were evident throughout the project. They delivered exactly what we envisioned and more.",
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
+                image: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
               }
             ].map((testimonial, index) => (
               <div key={testimonial.name} className="bg-white p-8 rounded-2xl shadow-lg">

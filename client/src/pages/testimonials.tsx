@@ -13,7 +13,7 @@ const testimonials = [
 		title: 'Homeowner',
 		location: 'Karen, Nairobi',
 		image:
-			'https://images.unsplash.com/photo-1494790108755-2616b45bb442?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: "First Interior transformed our home beyond our wildest dreams. Their attention to detail and creative vision made our space both beautiful and functional. The team was professional, punctual, and truly understood our lifestyle needs.",
 		project: 'Complete Home Renovation',
@@ -24,7 +24,7 @@ const testimonials = [
 		title: 'CEO',
 		location: 'Westlands, Nairobi',
 		image:
-			'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: "Working with First Interior on our corporate headquarters was exceptional. They delivered exactly what we envisioned and more. The space now reflects our company's values and has significantly improved our team's productivity and morale.",
 		project: 'Corporate Office Design',
@@ -35,7 +35,7 @@ const testimonials = [
 		title: 'Restaurant Owner',
 		location: 'CBD, Nairobi',
 		image:
-			'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: "The restaurant design exceeded all expectations. First Interior created an atmosphere that perfectly complements our cuisine and has become a talking point among our customers. Our bookings increased by 40% after the renovation!",
 		project: 'Restaurant Interior Design',
@@ -46,7 +46,7 @@ const testimonials = [
 		title: 'Property Developer',
 		location: 'Runda, Nairobi',
 		image:
-			'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: "First Interior helped us design model units for our luxury development. Their sophisticated approach and understanding of market preferences resulted in faster sales and premium pricing. Truly professional service.",
 		project: 'Luxury Apartment Staging',
@@ -57,7 +57,7 @@ const testimonials = [
 		title: 'Boutique Owner',
 		location: 'Lavington, Nairobi',
 		image:
-			'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: "The retail space design created by First Interior has transformed my boutique into a destination. The layout maximizes both aesthetic appeal and functionality, making shopping an experience for my customers.",
 		project: 'Retail Space Design',
@@ -68,7 +68,7 @@ const testimonials = [
 		title: 'Homeowner',
 		location: 'Kilimani, Nairobi',
 		image:
-			'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: "From concept to completion, First Interior delivered excellence. They worked within our budget and timeline while never compromising on quality. Our new kitchen has become the heart of our home.",
 		project: 'Kitchen Renovation',

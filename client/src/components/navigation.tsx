@@ -35,7 +35,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-20">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <img src={logo} alt="Logo" className="h-14 w-14 rounded-full shadow-md border-2 border-accent/30 group-hover:scale-105 transition-transform" />
+          <img src={logo} alt="Logo" className="h-11 w-11 rounded-full shadow-md border-2 border-accent/30 group-hover:scale-105 transition-transform" />
           <span className="font-extrabold text-xl tracking-tight inline">
             <span className="text-accent">First</span> <span className="text-black">Interior</span>
           </span>

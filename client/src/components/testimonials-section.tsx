@@ -8,7 +8,7 @@ const testimonials = [
 		name: 'Sarah Johnson',
 		title: 'Homeowner, Karen',
 		image:
-			'https://images.unsplash.com/photo-1494790108755-2616b45bb442?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: 'First Interior transformed our home beyond our wildest dreams. Their attention to detail and creative vision made our space both beautiful and functional.',
 	},
@@ -17,7 +17,7 @@ const testimonials = [
 		name: 'Michael Chen',
 		title: 'CEO, TechCorp',
 		image:
-			'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: 'The team\'s professionalism and expertise were evident throughout the project. They delivered exactly what we envisioned and more.',
 	},
@@ -26,7 +26,7 @@ const testimonials = [
 		name: 'Emily Rodriguez',
 		title: 'Restaurant Owner',
 		image:
-			'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100',
+			'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
 		rating: 5,
 		text: 'Working with First Interior was a pleasure from start to finish. They understood our needs perfectly and created a space we absolutely love.',
 	},
