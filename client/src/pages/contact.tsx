@@ -53,19 +53,19 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Visit Our Showroom',
-      details: ['Westlands, Nairobi', 'Kenya'],
+      details: ['Doonholm, Nairobi', 'Kenya'],
       description: 'Come see our latest designs and material samples',
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+254 700 123 456', '+254 701 234 567'],
+      details: ['+254 723 851 318', '+254 792 404 484'],
       description: 'Speak directly with our design consultants',
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['info@firstinterior.co.ke', 'projects@firstinterior.co.ke'],
+      details: ['info@firstinterior.co.ke' ],
       description: 'Send us your project details and requirements',
     },
     {

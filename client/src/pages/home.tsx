@@ -267,8 +267,8 @@ export default function Home() {
             </div>
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Interior design team working" 
+                src="https://cdn.pixabay.com/photo/2019/05/12/20/58/hotel-4199113_1280.jpg" 
+                alt="Living room design" 
                 className="rounded-2xl shadow-2xl w-full h-auto"
               />
             </div>
@@ -291,17 +291,17 @@ export default function Home() {
               {
                 title: "Residential Design",
                 description: "Transform your home into a sanctuary that reflects your personality and lifestyle.",
-                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+                image: "https://i.postimg.cc/rFWNhkgK/2000-6364dcf82b6a9-750x499-jpg.jpg"
               },
               {
                 title: "Commercial Spaces", 
                 description: "Create inspiring work environments that boost productivity and reflect your brand.",
-                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+                image: "https://i.postimg.cc/6pqjYS7S/Whats-App-Image-2024-03-11-at-12-40-32-PM-19-750x499.jpg"
               },
               {
                 title: "Consultation Services",
                 description: "Expert advice and guidance for all your interior design needs and projects.",
-                image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300"
+                image: "https://i.postimg.cc/tT084HVY/19807c4663f2b.jpg"
               }
             ].map((service, index) => (
               <div
@@ -350,15 +350,15 @@ export default function Home() {
               {
                 title: "Modern Kitchen Design",
                 category: "Kitchen",
-                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
+                image: "https://i.postimg.cc/2j1wZvZd/2000-6364d91109583-750x499-jpg.jpg"
               },
               {
-                title: "Luxury Bedroom Suite",
+                title: "Luxury Bedroom Design",
                 category: "Bedroom",
-                image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
+                image: "https://cdn.pixabay.com/photo/2022/04/14/13/36/bedroom-7132435_960_720.jpg"
               },
               {
-                title: "Executive Office",
+                title: "Executive Offices",
                 category: "Commercial",
                 image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"
               }
