@@ -75,6 +75,7 @@
     "vaul": "^1.1.2",
     "wouter": "^3.3.5",
     "ws": "^8.18.0",
+    "yet-another-react-lightbox": "^3.25.0",
     "zod": "^3.24.2",
     "zod-validation-error": "^3.4.0"
   },
@@ -96,7 +97,7 @@
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "dotenv": "^17.0.1",
-    "drizzle-kit": "^0.30.4",
+    "drizzle-kit": "^0.31.4",
     "esbuild": "^0.25.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.17",

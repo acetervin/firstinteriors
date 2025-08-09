@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { Filter, ExternalLink, Eye } from 'lucide-react';
+import Lightbox from 'yet-another-react-lightbox';
+import 'yet-another-react-lightbox/styles.css';
+
 
 interface PortfolioItem {
   id: number;
@@ -23,9 +26,10 @@ const ITEMS_PER_PAGE = 50;
 export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGridProps) {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedImage, setSelectedImage] = useState<PortfolioItem | null>(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
   const { ref: gridRef, hasIntersected } = useIntersectionObserver<HTMLDivElement>();
+
 
   const filteredItems = useMemo(() => {
     if (selectedCategory === 'All') {
@@ -54,25 +58,12 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
 
   const openImage = (item: PortfolioItem) => {
     const idx = filteredImages.findIndex(i => i.id === item.id);
-    setSelectedImage(item);
-    setSelectedImageIndex(idx !== -1 ? idx : null);
+    if (idx !== -1) {
+      setIndex(idx);
+      setOpen(true);
+    }
   };
 
-  const showPrev = () => {
-    if (selectedImageIndex !== null && selectedImageIndex > 0) {
-      setSelectedImage(filteredImages[selectedImageIndex - 1]);
-      setSelectedImageIndex(selectedImageIndex - 1);
-    }
-  };
-  const showNext = () => {
-    if (
-      selectedImageIndex !== null &&
-      selectedImageIndex < filteredImages.length - 1
-    ) {
-      setSelectedImage(filteredImages[selectedImageIndex + 1]);
-      setSelectedImageIndex(selectedImageIndex + 1);
-    }
-  };
 
   const LazyImage = ({ item }: { item: PortfolioItem }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -142,8 +133,15 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
     );
   };
 
+  const slides = filteredImages.map(item => ({
+    src: item.image,
+    title: item.title,
+    description: item.description,
+  }));
+
   return (
     <div className="space-y-8">
+
       {/* Filter Section */}
       <div className="flex flex-wrap items-center justify-center gap-4">
         <div className="flex items-center space-x-2 mr-6">
@@ -221,49 +219,12 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
         </button>
       </div>
 
-      {/* Image Modal */}
-      {selectedImage && (
-        <>
-          {/* Background overlay behind nav and modal */}
-          <div className="fixed inset-0 z-20 bg-black/80 backdrop-blur-sm" />
-          {/* Modal content, image below nav */}
-          <div className="fixed left-0 right-0 bottom-0 z-30 flex flex-col items-center justify-center animate-fadeIn" style={{ top: '5rem' }}>
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 text-white hover:text-accent text-3xl font-bold bg-black/70 rounded-full w-12 h-12 flex items-center justify-center z-10 shadow-lg border border-white/20 transition-all duration-200"
-              aria-label="Close image viewer"
-            >
-              ✕
-            </button>
-            <div className="flex flex-col items-center justify-center w-full h-full px-4">
-              <div className="relative flex items-center justify-center w-full max-w-3xl mx-auto">
-                <button
-                  onClick={showPrev}
-                  disabled={selectedImageIndex === 0}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center z-10 shadow-lg border border-white/20 text-xl hover:bg-accent/80 disabled:opacity-40 disabled:cursor-not-allowed md:w-12 md:h-12 md:text-2xl"
-                  aria-label="Previous image"
-                >
-                  &#8592;
-                </button>
-                <img
-                  src={selectedImage.image}
-                  alt={selectedImage.title}
-                  className="w-auto max-w-full max-h-[60vh] md:max-h-[80vh] object-contain rounded-2xl shadow-2xl border-4 border-white/10 animate-fadeIn"
-                  style={{ boxShadow: '0 8px 40px 0 rgba(73, 73, 73, 0.7)' }}
-                />
-                <button
-                  onClick={showNext}
-                  disabled={selectedImageIndex === filteredImages.length - 1}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center z-10 shadow-lg border border-white/20 text-xl hover:bg-accent/80 disabled:opacity-40 disabled:cursor-not-allowed md:w-12 md:h-12 md:text-2xl"
-                  aria-label="Next image"
-                >
-                  &#8594;
-                </button>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        index={index}
+        slides={slides}
+      />
     </div>
   );
 }
