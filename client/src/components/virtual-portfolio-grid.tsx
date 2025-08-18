@@ -115,7 +115,16 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
           }`}
         />
 
+        <div
+          className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-300 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <p className="text-white/75 text-lg font-semibold">© First Interior</p>
+        </div>
+
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+
           <button
             onClick={() => openImage(item)}
             className="bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors"
@@ -124,11 +133,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
           </button>
         </div>
 
-        <div className="absolute top-4 left-4">
-          <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">
-            {item.category}
-          </span>
-        </div>
+      
       </div>
     );
   };
@@ -224,7 +229,25 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
         close={() => setOpen(false)}
         index={index}
         slides={slides}
+        render={{
+          slide: ({ slide }) => (
+            <div className="relative w-full h-full">
+              <img
+                alt={(slide as any).title}
+
+                src={slide.src}
+                className="w-full h-full object-contain"
+              />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <p className="text-white/75 text-2xl md:text-4xl font-semibold">
+                  © First Interior
+                </p>
+              </div>
+            </div>
+          ),
+        }}
       />
+
     </div>
   );
 }
