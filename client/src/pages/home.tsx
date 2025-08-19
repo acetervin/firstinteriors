@@ -296,7 +296,7 @@ export default function Home() {
               {
                 title: "Commercial Spaces", 
                 description: "Create inspiring work environments that boost productivity and reflect your brand.",
-                image: "https://i.postimg.cc/6pqjYS7S/Whats-App-Image-2024-03-11-at-12-40-32-PM-19-750x499.jpg"
+                image: "https://i.postimg.cc/9fqxj7YY/Whats-App-Image-2024-03-11-at-12-40-32-PM-20-750x499.jpg"
               },
               {
                 title: "Consultation Services",
@@ -350,12 +350,12 @@ export default function Home() {
               {
                 title: "Modern Kitchen Design",
                 category: "Kitchen",
-                image: "https://i.postimg.cc/2j1wZvZd/2000-6364d91109583-750x499-jpg.jpg"
+                image: "https://media.joomeo.com/large/68a46141800eb.jpg"
               },
               {
                 title: "Luxury Bedroom Design",
                 category: "Bedroom",
-                image: "https://cdn.pixabay.com/photo/2022/04/14/13/36/bedroom-7132435_960_720.jpg"
+                image: "https://media.joomeo.com/large/68a46ecc4c78d.jpg"
               },
               {
                 title: "Executive Offices",
@@ -411,7 +411,7 @@ export default function Home() {
               },
               {
                 name: "Michael Chen", 
-                role: "CEO, TechCorp",
+                role: "Home owner",
                 text: "The team's professionalism and expertise were evident throughout the project. They delivered exactly what we envisioned and more.",
                 image: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
               }

@@ -240,7 +240,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
               />
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <p className="text-white/75 text-2xl md:text-4xl font-semibold">
-                  © First Interior
+                  © First Interiors
                 </p>
               </div>
             </div>

@@ -12,8 +12,9 @@ export const portfolioItems = pgTable("portfolio_items", {
   id: serial("id").primaryKey(),
   category: text("category").notNull(),
   image: text("image").notNull(),
-  title: text("title").notNull(),
-  description: text("description").notNull(),
+  title: text("title"),
+  description: text("description"),
+
   location: text("location").notNull(),
   year: text("year").notNull(),
 });

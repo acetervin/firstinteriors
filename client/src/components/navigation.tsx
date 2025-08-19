@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import logo from '@/assets/logo-new.png';
+import logo from '@/assets/FIRST INTERIORS DESIGNS.png';
 import { MobileMenu } from './mobile-menu';
 
 export function Navigation() {
@@ -34,11 +34,8 @@ export function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <img src={logo} alt="Logo" className="h-11 w-11 rounded-full shadow-md border-2 border-accent/30 group-hover:scale-105 transition-transform" />
-          <span className="font-extrabold text-xl tracking-tight inline">
-            <span className="text-accent">First</span> <span className="text-black">Interior</span>
-          </span>
+        <Link href="/" className="flex items-center group">
+          <img src={logo} alt="Logo" className="h-16 w-auto shadow-md group-hover:scale-105 transition-transform" />
         </Link>
         {/* Desktop Nav */}
         <div className="hidden custom-md:flex flex-1 items-center justify-center">
