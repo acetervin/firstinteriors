@@ -21,7 +21,7 @@ interface VirtualPortfolioGridProps {
   categories: string[];
 }
 
-const ITEMS_PER_PAGE = 50;
+const ITEMS_PER_PAGE = 52;
 
 export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGridProps) {
   const [selectedCategory, setSelectedCategory] = useState('All');

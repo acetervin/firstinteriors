@@ -201,11 +201,9 @@ const categories = [
 	'Bathrooms',
 	'Doors & Door Frames',
 	'Floors & Ceilings',
-	'Gazebo',
-	'Gypsum',
+	'Gazebo, Gypsum & Painting',
 	'Kitchens',
 	'Office Desks',
-	'Painting',
 	'Stairs',
 	'Wardrobes',
 ];
