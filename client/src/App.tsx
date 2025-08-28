@@ -12,6 +12,8 @@ import Contact from "@/pages/contact";
 import { TermsOfService } from "@/pages/terms-of-service";
 import { PrivacyPolicy } from "@/pages/privacy-policy";
 import NotFound from "@/pages/not-found";
+import FloatingActionButtons from "./components/floating-buttons";
+
 
 function Router() {
   return (
@@ -35,9 +37,11 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <FloatingActionButtons />
       </TooltipProvider>
     </QueryClientProvider>
   );
 }
+
 
 export default App;

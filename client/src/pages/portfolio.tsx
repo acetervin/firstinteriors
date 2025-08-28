@@ -59,19 +59,19 @@ export default function Portfolio() {
             </p>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
               <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">100+</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">500+</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wide">Projects</div>
               </div>
               <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">10</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">10+</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wide">Categories</div>
               </div>
               <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">5</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">15+</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wide">Years</div>
               </div>
               <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
-                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">9</div>
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">50+</div>
                 <div className="text-sm text-muted-foreground uppercase tracking-wide">Locations</div>
               </div>
             </div>

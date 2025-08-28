@@ -267,9 +267,9 @@ export default function Home() {
             </div>
             <div>
               <img 
-                src="https://cdn.pixabay.com/photo/2019/05/12/20/58/hotel-4199113_1280.jpg" 
+                src="https://media.joomeo.com/large/68a45f36d7391.jpg?auto=format&fit=crop&w=800&h=600" 
                 alt="Living room design" 
-                className="rounded-2xl shadow-2xl w-full h-auto"
+                className="rounded-2xl shadow-2xl w-800 h-600"
               />
             </div>
           </div>
