@@ -13,16 +13,6 @@
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/api/portfolio",
-      "dest": "/api/portfolio.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/dist/index.html"
-    }
-  ],
   "env": {
     "NODE_ENV": "production"
   }
