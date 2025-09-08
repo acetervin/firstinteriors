@@ -33,5 +33,6 @@ export default defineConfig({
       strict: true,
       deny: ["**/.*"],
     },
+    allowedHosts: ["localhost", "127.0.0.1"],
   },
 });
