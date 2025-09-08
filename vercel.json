@@ -2,16 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "server/routes.ts",
-          "server/storage.ts",
-          "shared/schema.ts",
-          "server/vite.ts"
-        ]
-      }
+      "src": "api/portfolio.ts",
+      "use": "@vercel/node"
     },
     {
       "src": "client/package.json",
@@ -23,8 +15,8 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server/index.ts"
+      "src": "/api/portfolio",
+      "dest": "/api/portfolio.ts"
     },
     {
       "src": "/(.*)",
