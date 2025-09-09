@@ -1,4 +1,5 @@
-import { users, type User, type InsertUser, portfolioItems, PortfolioItem } from "@shared/schema";
+import { users, type User, type InsertUser, portfolioItems, PortfolioItem } from "../shared/schema.js";
+
 import { desc } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/neon-http';
 import { neon } from '@neondatabase/serverless';
