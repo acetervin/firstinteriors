@@ -1,19 +1,18 @@
 {
   "version": 2,
   "builds": [
+    { "src": "api/portfolio.ts", "use": "@vercel/node" },
     {
-      "src": "api/portfolio.ts",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "client/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "client/dist/public"
+        "buildCommand": "npm run build:client",
+        "distDir": "dist/public"
       }
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
 }
