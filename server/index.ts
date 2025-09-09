@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes.js";
-import { setupVite, serveStatic, log } from "./vite.js";
+import { serveStatic, log } from "./vite.js";
+
 
 import dotenv from "dotenv";
 
@@ -55,8 +56,10 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 // doesn't interfere with the other routes
 if (app.get("env") === "development") {
   const startDevServer = async () => {
+    const { setupVite } = await import("./vite.js");
     await setupVite(app, server);
     const port = process.env.PORT || 5000;
+
     server.listen(port, () => {
       log(`serving on port ${port}`);
     });
