@@ -1,8 +1,8 @@
 import { users, type User, type InsertUser, portfolioItems, PortfolioItem } from "@shared/schema";
 import { desc } from 'drizzle-orm';
-import { drizzle } from 'drizzle-orm/postgres-js';
+import { drizzle } from 'drizzle-orm/neon-http';
+import { neon } from '@neondatabase/serverless';
 
-import postgres from 'postgres';
 import * as schema from '../shared/schema';
 import dotenv from 'dotenv';
 
@@ -22,9 +22,10 @@ export class DbStorage implements IStorage {
   private db;
 
   constructor(connectionString: string) {
-    const client = postgres(connectionString);
+    const client = neon(connectionString);
     this.db = drizzle(client, { schema });
   }
+
 
   async getUser(id: number): Promise<User | undefined> {
     const result = await this.db.query.users.findFirst({ where: (users, { eq }) => eq(users.id, id) });
