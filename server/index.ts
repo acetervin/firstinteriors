@@ -55,13 +55,14 @@ app.use((req, res, next) => {
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
+    // Serve on the port for local development
+    const port = process.env.PORT || 5000;
+    server.listen(port, () => {
+      log(`serving on port ${port}`);
+    });
   } else {
     serveStatic(app);
   }
-
-  // Serve on the port provided by Vercel or default to 5000 for local development
-  const port = process.env.PORT || 5000;
-  server.listen(port, () => {
-    log(`serving on port ${port}`);
-  });
 })();
+
+export default app;
