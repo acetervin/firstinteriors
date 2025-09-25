@@ -78,12 +78,13 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+           <div>
             <h4 className="text-base sm:text-lg font-semibold mb-4">Contact Info</h4>
             <ul className="text-sm sm:text-base space-y-2 text-muted-foreground">
-              <li>Westlands, Nairobi</li>
+              <li>Doonholm, Nairobi</li>
               <li>Kenya</li>
-              <li>+254 700 123 456</li>
+              <li>+254 723 851 318</li>
+              <li>+254 792 404 484</li>
               <li>info@firstinterior.co.ke</li>
             </ul>
           </div>
