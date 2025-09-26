@@ -110,7 +110,7 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
         <img
           ref={imgRef}
           alt={item.title}
-          className={`w-full h-full object-cover transition-all duration-300 ${
+          className={`w-full h-full object-cover transition-all duration-300 transform group-hover:scale-110 ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
         />
@@ -123,11 +123,12 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
           <p className="text-white/75 text-lg font-semibold">© First Interior</p>
         </div>
 
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-
+        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+          <h3 className="text-white text-lg font-semibold">{item.title}</h3>
+          <p className="text-gray-300 text-sm">{item.category}</p>
           <button
             onClick={() => openImage(item)}
-            className="bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors"
+            className="mt-4 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-colors"
           >
             <Eye size={20} />
           </button>
@@ -158,10 +159,10 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
                 selectedCategory === category
-                  ? 'bg-accent text-white shadow-lg'
-                  : 'bg-gray-100 text-muted-foreground hover:bg-accent/10'
+                  ? 'bg-gray-800 text-white border-gray-800'
+                  : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-200'
               }`}
             >
               {category}
@@ -183,17 +184,17 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
       {/* Portfolio Grid */}
       <div 
         ref={gridRef}
-        className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        className="columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6"
       >
         {paginatedItems.map((item, index) => (
           <div
             key={`${item.id}-${selectedCategory}`}
-            className={`group cursor-pointer reveal ${hasIntersected ? 'active' : ''}`}
+            className={`group cursor-pointer reveal ${hasIntersected ? 'active' : ''} block break-inside-avoid`}
             style={{ animationDelay: `${(index % ITEMS_PER_PAGE) * 0.05}s` }}
           >
             <LazyImage item={item} />
             <div className="mt-4 space-y-2">
-              <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">
+              <h3 className="font-semibold text-lg group-hover:text-gray-800 transition-colors">
                 {item.title}
               </h3>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
@@ -208,15 +209,15 @@ export function VirtualPortfolioGrid({ items, categories }: VirtualPortfolioGrid
       {/* Pagination Controls */}
       <div className="flex justify-center gap-4 py-8">
         <button
-          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-gray-800  focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border border-gray-300 bg-white text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
           disabled={currentPage === 1}
         >
           &#8592; Previous
         </button>
-        <span className="self-center text-muted-foreground font-medium">Page {currentPage} of {totalPages}</span>
+        <span className="self-center text-gray-600 font-medium">Page {currentPage} of {totalPages}</span>
         <button
-          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border-2 border-accent bg-white text-accent hover:bg-accent hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-2 rounded-full font-semibold shadow transition-all duration-200 border border-gray-300 bg-white text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
           disabled={currentPage === totalPages}
         >

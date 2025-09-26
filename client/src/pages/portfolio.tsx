@@ -41,7 +41,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <Navigation />
       
       {/* Hero Section */}
@@ -51,28 +51,25 @@ export default function Portfolio() {
             <BackButton />
           </div>
           <div ref={heroRef as React.RefObject<HTMLDivElement>} className={`text-center reveal ${heroIntersected ? 'active' : ''}`}>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-accent">
-              Our Portfolio
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Explore our extensive collection of over 100 interior design projects showcasing our expertise across all categories
+                        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-accent">Our Work</h1>
+                        <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">              A collection of our finest interior design projects, showcasing our commitment to quality and craftsmanship.
             </p>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-              <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
+              <div className="text-center p-4 bg-white/50 rounded-lg">
                 <div className="text-4xl md:text-5xl font-bold text-accent mb-2">500+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wide">Projects</div>
+                <div className="text-sm text-gray-700 uppercase tracking-wide">Projects</div>
               </div>
-              <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
+              <div className="text-center p-4 bg-white/50 rounded-lg">
                 <div className="text-4xl md:text-5xl font-bold text-accent mb-2">10+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wide">Categories</div>
+                <div className="text-sm text-gray-700 uppercase tracking-wide">Categories</div>
               </div>
-              <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
+              <div className="text-center p-4 bg-white/50 rounded-lg">
                 <div className="text-4xl md:text-5xl font-bold text-accent mb-2">15+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wide">Years</div>
+                <div className="text-sm text-gray-700 uppercase tracking-wide">Years</div>
               </div>
-              <div className="text-center p-4 bg-white/50 rounded-lg backdrop-blur-sm">
+              <div className="text-center p-4 bg-white/50 rounded-lg">
                 <div className="text-4xl md:text-5xl font-bold text-accent mb-2">50+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wide">Locations</div>
+                <div className="text-sm text-gray-700 uppercase tracking-wide">Locations</div>
               </div>
             </div>
           </div>
@@ -99,30 +96,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Performance Info */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">Optimized for Performance</h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Our portfolio system is built to handle thousands of projects efficiently with lazy loading, 
-            virtual scrolling, and smart image optimization for the best user experience.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="font-semibold mb-2">Lazy Loading</h3>
-              <p className="text-sm text-muted-foreground">Images load only when needed, reducing initial load time</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="font-semibold mb-2">Virtual Scrolling</h3>
-              <p className="text-sm text-muted-foreground">Efficient rendering of large datasets without performance loss</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="font-semibold mb-2">Smart Filtering</h3>
-              <p className="text-sm text-muted-foreground">Fast category filtering with optimized data structures</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <Footer />
     </div>

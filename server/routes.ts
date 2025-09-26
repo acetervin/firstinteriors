@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage.js";
+import fs from "fs";
+import path from "path";
 
 
 export function registerRoutes(app: Express): Server {
@@ -12,7 +13,9 @@ export function registerRoutes(app: Express): Server {
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
   app.get("/api/portfolio", async (req, res) => {
     try {
-      const portfolioItems = await storage.getPortfolioItems();
+      const filePath = path.resolve(process.cwd(), 'client/src/data/portfolio.json');
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const portfolioItems = JSON.parse(fileContent);
       res.json(portfolioItems);
     } catch (error) {
       console.error("Error fetching portfolio items:", error);
