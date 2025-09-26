@@ -13,7 +13,8 @@ export function registerRoutes(app: Express): Server {
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
   app.get("/api/portfolio", async (req, res) => {
     try {
-      const filePath = path.resolve(process.cwd(), 'client/src/data/portfolio.json');
+      const __dirname = path.dirname(new URL(import.meta.url).pathname);
+      const filePath = path.join(__dirname, '..\client\src\data\portfolio.json');
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const portfolioItems = JSON.parse(fileContent);
       res.json(portfolioItems);
