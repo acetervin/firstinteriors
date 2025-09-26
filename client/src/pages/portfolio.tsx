@@ -9,7 +9,7 @@ import { PortfolioItem } from '@/types/portfolio';
 import { Skeleton } from '@/components/ui/skeleton';
 
 async function fetchPortfolioItems(): Promise<PortfolioItem[]> {
-  const response = await fetch('/api/portfolio');
+  const response = await fetch('/portfolio.json');
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
